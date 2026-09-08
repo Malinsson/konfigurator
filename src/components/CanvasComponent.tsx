@@ -1,7 +1,8 @@
 import styles from './CanvasComponent.module.css'
 import * as THREE from 'three'
 import { useRef, useState } from 'react'
-import { Canvas, useFrame, type ThreeElements } from '@react-three/fiber'
+import { Canvas, type ThreeElements } from '@react-three/fiber'
+import { CameraController } from './CameraController'
 
 
 
@@ -11,7 +12,6 @@ function CanvasComponent() {
     const ref = useRef<THREE.Mesh>(null!)
     const [hovered, hover] = useState(false)
     const [clicked, click] = useState(false)
-    useFrame((_state, delta) => (ref.current.rotation.x += delta))
     return (
       <mesh
         {...props}
@@ -30,6 +30,7 @@ function CanvasComponent() {
   return (
     <section className={styles.home}>
       <Canvas>
+        <CameraController />
         <ambientLight intensity={Math.PI / 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />

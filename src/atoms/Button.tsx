@@ -8,7 +8,7 @@ import styles from './Button.module.css'
 // `...buttonProps`: any other native button props (onClick, disabled, title, data-*) are forwarded
 
 interface ButtonProps {
-  buttonName: string;
+  buttonName?: string;
   buttonColor: string;
   variant: string;
   //   iconSrc?: string | undefined;
@@ -46,7 +46,7 @@ export default function Button({
       type={type}
       aria-label={ariaLabel}
     >
-      {buttonName}
+        {buttonName}
     </button>
   )
 }

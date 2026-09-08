@@ -44,11 +44,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid currentColor;
   background-color: transparent;
+  border: 2px solid;
 }
 
-.circleOutline:hover {
-  opacity: 0.7;
+.gold.circleOutline {
+  border-color: gray;
+  background-color: #d4af37;
+  color: black;
+}
+
+.gold.circleOutline:hover {
+  border-color: #c9a227;
+  color: black;
+}
+
+.silver.circleOutline {
+  border-color: #c0c0c0;
+  color: #c0c0c0;
+}
+
+.silver.circleOutline:hover {
+  border-color: #a8a8a8;
+  color: #a8a8a8;
 }
 
