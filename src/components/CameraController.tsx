@@ -20,6 +20,10 @@ export function CameraController() {
   // Store the camera reference in context when component mounts
   useEffect(() => {
     contextCameraRef.current = camera;
+
+    // Set default camera position to view from the top
+    camera.position.set(0, 5, 0);
+    camera.lookAt(0, 0, 0);
   }, [camera, contextCameraRef]);
 
   // This component doesn't render anything visual
