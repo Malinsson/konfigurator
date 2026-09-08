@@ -1,4 +1,4 @@
-import { useEffect, useRef, MutableRefObject } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 import { Camera, Vector3 } from 'three';
 import { HOTSPOTS } from '../config/hotspots.config';
 
@@ -15,7 +15,7 @@ interface UseZoomToSpotReturn {
   zoomToSpot: (hotspotName: string) => void;
 }
 
-export function useZoomToSpot(cameraRef: MutableRefObject<Camera | null>): UseZoomToSpotReturn {
+export function useZoomToSpot(cameraRef: RefObject<Camera | null>): UseZoomToSpotReturn {
   // Track animation state so we can cancel previous animations if user clicks quickly
   const animationRef = useRef<number | null>(null);
   const isAnimatingRef = useRef(false);
