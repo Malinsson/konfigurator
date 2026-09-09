@@ -28,15 +28,15 @@ type ViewConfig = {
 
 const VIEWS: Record<ViewId, ViewConfig> = {
   top: {
-    position: [0, 6, 0.05],
+    position: [-0.05, 6, 0.5],
     target: [0, 0, 0],
     minPolar: Math.PI / 2 - 0.2,
     maxPolar: Math.PI / 2 + 0.2,
-    minAzimuth: -0.3,
-    maxAzimuth: 0.3,
+    minAzimuth: -0.6,
+    maxAzimuth: 0.6,
   },
   face: {
-    position: [0, 2, 0.5],
+    position: [0, 3.8, 0.5],
     target: [0, 0, 0],
     minPolar: 0.15,
     maxPolar: Math.PI / 2 - 0.05,

@@ -14,16 +14,19 @@ function App() {
     <CameraProvider>
       <TestLayout>
         <CanvasComponent view={currentView} />
+
         <TestButtonGroup>
           <button onClick={() => setCurrentView('top')}>Top View</button>
           <button onClick={() => setCurrentView('face')}>Face View</button>
           <button onClick={() => setCurrentView('band')}>Band View</button>
         </TestButtonGroup>
+
         <TestButtonGroup>
           <ZoomButton hotspotName="front" />
           <ZoomButton hotspotName="top" />
           <ZoomButton hotspotName="side" />
         </TestButtonGroup>
+        
       </TestLayout>
     </CameraProvider>
   )
