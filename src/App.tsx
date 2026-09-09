@@ -1,41 +1,22 @@
+import CanvasComponent from './components/CanvasComponent'
 import './App.css'
-import * as THREE from 'three'
-import { useRef, useState } from 'react'
-import { Canvas, useFrame, type ThreeElements } from '@react-three/fiber'
-
+import TestLayout from './components/TestLayout'
+import TestButtonGroup from './components/TestButtonGroup'
+import { ZoomButton } from './molecules/ZoomButton'
+import { CameraProvider } from './context/CameraContext'
 
 function App() {
-
-  function Box(props: ThreeElements['mesh']) {
-    const ref = useRef<THREE.Mesh>(null!)
-    const [hovered, hover] = useState(false)
-    const [clicked, click] = useState(false)
-    useFrame((_state, delta) => (ref.current.rotation.x += delta))
-    return (
-      <mesh
-        {...props}
-        ref={ref}
-        scale={clicked ? 1.5 : 1}
-        onClick={(_event) => click(!clicked)}
-        onPointerOver={(_event) => hover(true)} 
-        onPointerOut={(_event) => hover(false)}> 
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-      </mesh>
-    )
-  }
-
-
   return (
-    <section className="home">
-      <Canvas>
-        <ambientLight intensity={Math.PI / 2} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
-        <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-        <Box position={[-1.2, 0, 0]} />
-        <Box position={[1.2, 0, 0]} />
-      </Canvas>
-    </section>
+    <CameraProvider>
+      <TestLayout>
+        <CanvasComponent />
+        <TestButtonGroup>
+          <ZoomButton hotspotName="front" />
+          <ZoomButton hotspotName="top" />
+          <ZoomButton hotspotName="side" />
+        </TestButtonGroup>
+      </TestLayout>
+    </CameraProvider>
   )
 }
 
