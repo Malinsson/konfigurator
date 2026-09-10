@@ -1,31 +1,68 @@
-import { useEffect } from 'react';
-import { useThree } from '@react-three/fiber';
-import { useCameraContext } from '../context/CameraContext';
+import { useEffect, useRef } from 'react';
+import { CameraControls } from '@react-three/drei'
 
-// CameraController Component
-// This component runs inside the Canvas and connects the Three.js camera to our CameraContext
-// It should be placed as a child of <Canvas> in your CanvasComponent
-//
-// What it does:
-// 1. Gets the camera from React Three Fiber using useThree()
-// 2. Stores it in the CameraContext so buttons can access it
-// 3. Enables communication between buttons (outside Canvas) and camera (inside Canvas)
-//
-// Usage: Add <CameraController /> as a child of <Canvas> in CanvasComponent
 
-export function CameraController() {
-  const { camera } = useThree();
-  const { camera: contextCameraRef } = useCameraContext();
+export type ViewId = 'top' | 'face' | 'band';
 
-  // Store the camera reference in context when component mounts
-  useEffect(() => {
-    contextCameraRef.current = camera;
+type ViewConfig = {
+  position: [number, number, number]
+  target: [number, number, number]
+  minPolar: number
+  maxPolar: number
+  minAzimuth: number
+  maxAzimuth: number
+}
 
-    // Set default camera position to view from the top
-    camera.position.set(0, 5, 0);
-    camera.lookAt(0, 0, 0);
-  }, [camera, contextCameraRef]);
+const VIEWS: Record<ViewId, ViewConfig> = {
+  top: {
+    position: [-0.05, 6, 0.5],
+    target: [0, 0, 0],
+    minPolar: 0.5,
+    maxPolar: Math.PI / 2 - 0.05,
+    minAzimuth: -0.6,
+    maxAzimuth: 0.6,
+  },
+  face: {
+    position: [0, 3.8, 0.5],
+    target: [0, 0, 0],
+    minPolar: 0.15,
+    maxPolar: Math.PI / 2 - 0.05,
+    minAzimuth: -0.6,
+    maxAzimuth: 0.6,
+  },
+  band: {
+    position: [0, -5, 0.45],
+    target: [0, -0.05, 0],
+    minPolar: 0.2,
+    maxPolar: Math.PI - 0.2,
+    minAzimuth: -Math.PI,
+    maxAzimuth: Math.PI,
+  },
+}
 
-  // This component doesn't render anything visual
-  return null;
+export function CameraController({ view }: { view: ViewId }) {
+    const controlsRef = useRef<CameraControls>(null)
+
+    useEffect(() => {
+      const controls = controlsRef.current
+      if (!controls) return
+      
+      const cfg = VIEWS[view]
+      
+      controls.minPolarAngle = cfg.minPolar
+      controls.maxPolarAngle = cfg.maxPolar
+      controls.minAzimuthAngle = cfg.minAzimuth
+      controls.maxAzimuthAngle = cfg.maxAzimuth
+      
+      // animate camera to the new view's default framing
+      controls.setLookAt(
+        ...cfg.position,
+        ...cfg.target,
+        true // enableTransition
+      )
+    }, [view])
+  
+  return <CameraControls ref={controlsRef} makeDefault />
+  
+
 }
