@@ -69,3 +69,8 @@
   color: #a8a8a8;
 }
 
+.clear {
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+}
