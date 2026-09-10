@@ -22,11 +22,13 @@ function App() {
           <button onClick={() => setCurrentView('band')}>Band View</button>
         </TestButtonGroup>
 
+        {/*
         <TestButtonGroup>
           <ZoomButton hotspotName="front" />
           <ZoomButton hotspotName="top" />
           <ZoomButton hotspotName="side" />
         </TestButtonGroup>
+        */}
 
       </TestLayout>
     </CameraProvider>
