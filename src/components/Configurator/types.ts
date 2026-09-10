@@ -1,4 +1,15 @@
-// types.ts
+// Generic Interfaces for ConfigurationPanel
+export interface Option {
+  id: string;
+  label: string;
+  [key: string]: any; // Optional, can be used for additional data
+}
+
+export interface OptionGroup {
+  label: string;
+  options: Option[];
+  subOptions?: Record<string, Option[]>; // Optional, for nested options like metal > gold, silver, etc.
+}
 
 // Band Configuration
 export interface BandMaterialOption {
@@ -11,6 +22,16 @@ export interface BandOption {
   material: BandMaterialOption;
 }
 
+// CONSTANT - the actual data that matches the interface
+export const BAND_OPTIONS: BandMaterialOption[] = [
+  { id: 'gold', label: 'Gold', materialType: 'metal' },
+  { id: 'silver', label: 'Silver', materialType: 'metal' },
+  { id: 'brown', label: 'Brown', materialType: 'leather' },
+  { id: 'black', label: 'Black', materialType: 'leather' },
+  { id: 'black-rubber', label: 'Black', materialType: 'rubber' },
+  { id: 'white-rubber', label: 'White', materialType: 'rubber' },
+];
+
 // Dial Color Configuration
 export interface DialColorOption {
   id: string;
@@ -18,11 +39,28 @@ export interface DialColorOption {
   value: string;
 }
 
+export const DIAL_COLOR_OPTIONS: DialColorOption[] = [
+  { id: 'gold', label: 'Gold', value: '#FFD700' },
+  { id: 'silver', label: 'Silver', value: '#C0C0C0' },
+];
+
 // Dial Details Configuration
 export interface DialDetailsOption {
   background: 'gothenburg' | 'white' | 'black';
-  index: 'with' | 'without';
+  index: 'with-lines' | 'without-lines';
 }
+
+export const DIAL_DETAILS_OPTIONS = {
+  background: [
+    { id: 'gothenburg', label: 'Gothenburg' },
+    { id: 'white', label: 'White' },
+    { id: 'black', label: 'Black' }
+  ],
+  index: [
+    { id: 'with-lines', label: 'With Index Lines' },
+    { id: 'without-lines', label: 'Without Index Lines' }
+  ]
+};
 
 // Overall Watch Configuration State
 export interface WatchConfiguration {
@@ -31,23 +69,28 @@ export interface WatchConfiguration {
   dialDetails: DialDetailsOption | null;
 }
 
-// Accordion Types
-export type ConfiguratorSection = 'band' | 'dialColor' | 'dialDetails';
+// ============================================================================
+// COMPONENT PROPS INTERFACES
+// ============================================================================
 
-export interface AccordionSectionConfig {
-  id: ConfiguratorSection;
+// ConfigurationPanel Component Props
+export interface ConfigurationPanelProps {
+  options: Option[] | OptionGroup[];
+  currentSelection: any;
+  onSelect: (selection: any) => void;
+  onNext: () => void;
+  onPrevious?: () => void;
+}
+
+// OptionButton Component Props
+export interface OptionButtonProps {
   label: string;
-  onSectionOpen: () => void;
+  isSelected: boolean;
+  onClick: () => void;
 }
 
-export interface AccordionItemProps {
-  section: AccordionSectionConfig;
-  isOpen: boolean;
-  onToggle: () => void;
-  children: React.ReactNode;
-}
-
-export interface AccordionProps {
-  sections: AccordionSectionConfig[];
-  children: React.ReactNode;
+// Step Component Props - shared by all step components (BandStep, DialColorStep, etc.)
+export interface StepProps {
+  onNext: () => void;
+  onPrevious?: () => void;
 }
