@@ -1,9 +1,9 @@
 import styles from './ConfigurationPanel.module.css';
 
-interface ConfigurationPanelProps {
-  panelName: string;
-  
-}
+// interface ConfigurationPanelProps {
+//   panelName: string;
+
+// }
 export default function ConfigurationPanel({
     
 
