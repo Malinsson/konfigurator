@@ -15,6 +15,7 @@ function App() {
       <TestLayout>
         <CanvasComponent view={currentView} />
 
+        {/* Connect the function of these buttons to each step in the configuraton */}
         <TestButtonGroup>
           <button onClick={() => setCurrentView('top')}>Top View</button>
           <button onClick={() => setCurrentView('face')}>Face View</button>
@@ -26,7 +27,7 @@ function App() {
           <ZoomButton hotspotName="top" />
           <ZoomButton hotspotName="side" />
         </TestButtonGroup>
-        
+
       </TestLayout>
     </CameraProvider>
   )
