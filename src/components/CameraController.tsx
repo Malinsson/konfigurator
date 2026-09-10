@@ -17,8 +17,8 @@ const VIEWS: Record<ViewId, ViewConfig> = {
   top: {
     position: [-0.05, 6, 0.5],
     target: [0, 0, 0],
-    minPolar: Math.PI / 2 - 0.2,
-    maxPolar: Math.PI / 2 + 0.2,
+    minPolar: 0.5,
+    maxPolar: Math.PI / 2 - 0.05,
     minAzimuth: -0.6,
     maxAzimuth: 0.6,
   },
