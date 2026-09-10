@@ -7,16 +7,16 @@ import { CameraProvider } from './context/CameraContext'
 
 function App() {
   return (
-    <CameraProvider>
-      <TestLayout>
-        <CanvasComponent />
-        <TestButtonGroup>
-          <ZoomButton hotspotName="front" />
-          <ZoomButton hotspotName="top" />
-          <ZoomButton hotspotName="side" />
-        </TestButtonGroup>
-      </TestLayout>
-    </CameraProvider>
+      <CameraProvider>
+        <TestLayout>
+          <CanvasComponent />
+          <TestButtonGroup>
+            <ZoomButton hotspotName="front" />
+            <ZoomButton hotspotName="top" />
+            <ZoomButton hotspotName="side" />
+          </TestButtonGroup>
+        </TestLayout>
+      </CameraProvider>
   )
 }
 
