@@ -4,6 +4,7 @@ import { HOTSPOTS } from '../config/hotspots.config';
 
 interface ZoomButtonProps {
   hotspotName: string;
+  onClick?: () => void; // Optional onClick handler for additional actions
 }
 
 // ZoomButton Component
