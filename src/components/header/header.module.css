@@ -1,10 +1,43 @@
 .header {
     display: flex;
-    padding: 2rem;
+    padding: 0 1rem ;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 4rem;
+}
+
+.logo, .shoppingBagIcon {
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 ul {
     list-style: none;
     display: flex;
     gap: 4rem;
+}
+
+li {
+    font-family: var(--serif);
+}
+
+li a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.shoppingBagIcon {
+    display: block;
+    width: 30px;
+    height: auto;
 }
