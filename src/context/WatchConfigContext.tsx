@@ -5,7 +5,11 @@ import { createContext, useContext, useState, type ReactNode } from 'react';
 // ============================================================================
 
 // Define what each step looks like
-export type Step = 'band' | 'dialColor' | 'dialDetails';
+export type Step = 'band' | 'dialColor' | 'dialDetails' | 'overview';
+
+export type StepName = {
+  [key in Step]: string;
+};
 
 // Band selection structure
 export interface BandSelection {
@@ -75,7 +79,7 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
   const [isStarted, setIsStarted] = useState(false);
 
   // Step order for navigation
-  const STEP_ORDER: Step[] = ['band', 'dialColor', 'dialDetails'];
+  const STEP_ORDER: Step[] = ['band', 'dialColor', 'dialDetails', 'overview'];
 
   // Actions
   const startConfigurator = () => {

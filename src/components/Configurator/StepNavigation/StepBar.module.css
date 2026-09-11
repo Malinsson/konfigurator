@@ -11,13 +11,3 @@
     gap: 5rem;
     border-top: 1px solid black;
 }
-
-.step {
-    text-align: center;
-    font-size: var(--lg);
-    color: var(--color-text);
-}
-
-.stepInactive {
-    color: var(--not-active)
-}

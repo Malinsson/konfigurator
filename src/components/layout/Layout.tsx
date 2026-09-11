@@ -9,7 +9,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <section className={styles.content}>
         {children}
       </section>
-      <StepBar />
+      <StepBar currentStep={'band'} />
     </main>
   )
 }

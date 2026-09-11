@@ -1,7 +1,7 @@
 import './App.css'
 import { Layout } from './components/layout/Layout'
 import CanvasComponent from './components/CanvasComponent'
-import TestButtonGroup from './components/TestButtonGroup'
+//import TestButtonGroup from './components/TestButtonGroup'
 //import { ZoomButton } from './molecules/ZoomButton'
 import { CameraProvider } from './context/CameraContext'
 import type { ViewId } from './components/CameraController'
@@ -24,13 +24,7 @@ function App() {
           <button onClick={() => setCurrentView('band')}>Band View</button>
         </TestButtonGroup>
       */}
-        {/*
-        <TestButtonGroup>
-          <ZoomButton hotspotName="front" />
-          <ZoomButton hotspotName="top" />
-          <ZoomButton hotspotName="side" />
-        </TestButtonGroup>
-        */}
+
 
       </Layout>
     </CameraProvider>
