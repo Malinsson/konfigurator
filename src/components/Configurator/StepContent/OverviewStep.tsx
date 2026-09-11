@@ -38,7 +38,7 @@ export default function OverviewStep() {
     (opt) => opt.id === selections.dialDetails?.background
   )?.label;
 
-  const indexYesNo = selections.dialDetails?.index === 'with' ? 'Yes' : 'No';
+  const indexYesNo = !selections.dialDetails?.index ? '—' : selections.dialDetails.index === 'with' ? 'Yes' : 'No';
 
   return (
     <div className={styles.container}>
