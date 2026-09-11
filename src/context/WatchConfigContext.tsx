@@ -13,13 +13,13 @@ export type StepName = {
 
 // Band selection structure
 export interface BandSelection {
-  category: 'metal' | 'leather' | 'rubber' | null;
+  category: 'steel' | 'leather' | null;
   type: string | null; // 'gold', 'silver', 'brown', 'black', 'white'
 }
 
 // Dial Details selection structure
 export interface DialDetailsSelection {
-  background: 'gothenburg' | 'white' | 'black' | null;
+  background: 'west' | 'white' | 'black' | null;
   index: 'with-lines' | 'without-lines' | null;
 }
 
