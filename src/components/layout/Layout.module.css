@@ -11,6 +11,6 @@ main {
 }
 
 .content > * {
+    flex: 0 0 50%;
     height: 100%;
-    width: 50%;
 }

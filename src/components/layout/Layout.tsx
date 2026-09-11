@@ -6,9 +6,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main>
       <Header />
-      <div className={styles.content}>
+      <section className={styles.content}>
         {children}
-      </div>
+      </section>
       <StepBar />
     </main>
   )
