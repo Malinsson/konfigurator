@@ -1,0 +1,24 @@
+.stepBar {
+    bottom: 0;
+    position: absolute;
+    margin: 0 2rem;
+    width: calc(100% - 4rem);
+    height: 70px;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7rem;
+    border-top: 1px solid black;
+}
+
+.stepBarLine {
+    position: absolute;
+    top: -0.75px;
+    left: 5%;
+    width: 15%;
+    height: 1.5px;
+    background-color: var(--border);
+    transition: transform 0.4s ease;
+
+}

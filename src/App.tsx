@@ -1,35 +1,36 @@
-import CanvasComponent from './components/CanvasComponent'
 import './App.css'
-import TestLayout from './components/TestLayout'
-import TestButtonGroup from './components/TestButtonGroup'
-
-import { CameraProvider } from './context/CameraContext'
-import { WatchConfigProvider } from './context/WatchConfigContext'
-import { Header } from './components/header/header'
-import type { ViewId } from './components/CameraController'
 import { useState } from 'react'
-import BandStep from './components/Configurator/BandStep'
+//import TestButtonGroup from './components/TestButtonGroup'
+
+import { WatchConfigProvider } from './context/WatchConfigContext'
+import { Layout } from './components/layout/Layout'
+import { CameraProvider } from './context/CameraContext'
+import ConfigurationPanel from './components/Configurator/ConfigurationPanel/ConfigurationPanel'
+import CanvasComponent from './components/CanvasComponent'
+import type { ViewId } from './components/CameraController'
+//import TestButtonGroup from './components/TestButtonGroup'
 
 function App() {
-  const [currentView, setCurrentView] = useState<ViewId>('top')
+  const [currentView, /*setCurrentView*/] = useState<ViewId>('top');
 
   return (
-    <WatchConfigProvider>
-      <CameraProvider>
-        <TestLayout>
-          <Header />
+    <CameraProvider>
+      <WatchConfigProvider>
+        <Layout>
+          <ConfigurationPanel />
           <CanvasComponent view={currentView} />
 
-          {/* Connect the function of these buttons to each step in the configuraton */}
-          <TestButtonGroup>
-            <button onClick={() => setCurrentView('top')}>Top View</button>
-            <button onClick={() => setCurrentView('face')}>Face View</button>
-            <button onClick={() => setCurrentView('band')}>Band View</button>
-          </TestButtonGroup>
-          <BandStep />
-        </TestLayout>
-      </CameraProvider>
-    </WatchConfigProvider>
+        {/* Connect the function of these buttons to each step in the configuraton 
+        <TestButtonGroup>
+          <button onClick={() => setCurrentView('top')}>Top View</button>
+          <button onClick={() => setCurrentView('face')}>Face View</button>
+          <button onClick={() => setCurrentView('band')}>Band View</button>
+        </TestButtonGroup>
+      */}
+
+        </Layout>
+      </WatchConfigProvider>
+    </CameraProvider>
   )
 }
 
