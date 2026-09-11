@@ -1,0 +1,167 @@
+/* Shared StepContent Styles - used by all step components (BandStep, DialColorStep, DialDetailsStep) */
+
+.container {
+  display: flex;
+  width: 19.125rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+.overviewSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem; 
+}
+
+.header span {
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5625rem;
+  color: var(--subtext);
+}
+
+.sectionHeader p {
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stepHeader h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.optionsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectionDisplay {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #0066cc;
+}
+
+.selectionDisplay p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.selectionDisplay strong {
+  text-transform: capitalize;
+  color: #0066cc;
+}
+
+.stepFooter {
+  display: flex;
+}
+
+/* OverviewStep specific styles */
+
+.sectionContent p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem;
+  font-family: var(--serif);
+}
+
+.optionsSection h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem;
+  color: var(--text);
+}
+
+.priceSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.priceText {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.addToCartButton {
+  width: 100%;
+  height: 33px;
+  border: 1px solid var(--border);
+  background-color: white;
+  padding: .5rem 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.addToCartButton:hover {
+  background-color: var(--designbtn-bg);
+}
+
+.addToCartIcon {
+  height: 1rem;
+  width: auto;
+}

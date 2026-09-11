@@ -9,7 +9,6 @@ export default function ConfigurationPanel() {
     <div className={styles.configurationPanel}>
       {/* <h2>Configuration Panel</h2> */}
       {/* Add your configuration options here */}
-
       
       <NavigationButton stepDirection="back" isActive={currentStep !== 'band'} onClick={goToPreviousStep} />
       <NavigationButton stepDirection="next" isActive={currentStep !== 'overview'} onClick={goToNextStep} />
