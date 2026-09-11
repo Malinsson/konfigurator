@@ -2,6 +2,7 @@
     text-align: center;
     font-size: var(--lg);
     color: var(--color-text);
+    flex: 1;
 }
 
 .stepInactive {

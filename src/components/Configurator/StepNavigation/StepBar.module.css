@@ -4,7 +4,7 @@
     margin: 0 2rem;
     width: calc(100% - 4rem);
     height: 70px;
-    padding: 1rem;
+    padding: 1rem 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,8 @@
 .stepBarLine {
     position: absolute;
     top: 0;
-    left: 22%;
-    width: 12%;
+    left: 2.5%;
+    width: 20%;
     height: 2px;
     background-color: var(--border);
     transition: transform 0.4s ease;
