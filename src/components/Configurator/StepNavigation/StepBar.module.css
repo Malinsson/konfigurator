@@ -1,0 +1,23 @@
+.stepBar {
+    bottom: 0;
+    position: absolute;
+    margin: 0 2rem;
+    width: 100%;
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    border-top: 1px solid black;
+}
+
+.step {
+    text-align: center;
+    font-size: var(--lg);
+    color: var(--color-text);
+}
+
+.stepInactive {
+    color: var(--not-active)
+}
