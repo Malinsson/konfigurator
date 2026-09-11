@@ -11,6 +11,7 @@ import clockClasped from '../assets/models/clock_clasped.glb?url'
 function Clock(props: ThreeElements['group']) {
   const { scene } = useGLTF(clockClasped)
   const groupRef = useRef<THREE.Group>(null)
+  console.log('Clock model loaded:', scene)
   //const [clicked, click] = useState(false)
 
 
@@ -35,7 +36,7 @@ function CanvasComponent({view}: {view: ViewId}) {
         <ambientLight intensity={Math.PI / 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-        <Clock position={[-3.1, 0, 0]} />
+        <Clock position={[-3.1, 0, -1]} />
       </Canvas>
     </section>
   )

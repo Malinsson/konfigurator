@@ -1,6 +1,6 @@
 import styles from './StepBar.module.css';
 
-export default function StepBar() {
+export function StepBar() {
   return (
     <div className={styles.stepBar}>
       <div className={styles.step}></div>
