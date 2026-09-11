@@ -11,7 +11,7 @@ import styles from './StepContent.module.css';
  * Allows user to select dial details (background and index lines).
  *
  * Flow:
- * 1. User selects an index option (with-lines or without-lines)
+ * 1. User selects an index option (with or without lines)
  * 2. User selects a background option (west, white, or black)
  * 3. updateDialDetails updates context and 3D model
  */
