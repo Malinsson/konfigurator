@@ -31,7 +31,7 @@ interface OptionButtonWithClassProps extends OptionButtonProps {
 export default function OptionButton({ label, isSelected, onClick, cssClass }: OptionButtonWithClassProps) {
   return (
     <button
-      className={`${styles.button} ${cssClass || ''} ${isSelected ? styles.selected : ''}`}
+      className={`${styles.button} ${cssClass || ''} ${isSelected ? styles.selected : ''} ${isSelected ? 'selected' : ''}`}
       onClick={onClick}
       aria-label={label}
       aria-pressed={isSelected}

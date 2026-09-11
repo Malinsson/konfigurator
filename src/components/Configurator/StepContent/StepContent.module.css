@@ -1,4 +1,4 @@
-/* BandStep Styles */
+/* Shared StepContent Styles - used by all step components (BandStep, DialColorStep, DialDetailsStep) */
 
 .container {
   display: flex;

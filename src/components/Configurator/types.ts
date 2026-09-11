@@ -55,19 +55,19 @@ export const DIAL_COLOR_OPTIONS: DialColorOption[] = [
 
 // Dial Details Configuration
 export interface DialDetailsOption {
-  background: 'west' | 'white' | 'black';
-  index: 'with-lines' | 'without-lines';
+  background: 'west' | 'black' | 'white';
+  index: 'with' | 'without';
 }
 
 export const DIAL_DETAILS_OPTIONS = {
   background: [
     { id: 'west', label: 'West' },
-    { id: 'white', label: 'White' },
     { id: 'black', label: 'Black' },
+    { id: 'white', label: 'White' },
   ],
   index: [
-    { id: 'with-lines', label: 'With Index Lines' },
-    { id: 'without-lines', label: 'Without Index Lines' },
+    { id: 'with', label: 'With Index Lines' },
+    { id: 'without', label: 'Without Index Lines' },
   ],
 } as const satisfies Record<keyof DialDetailsOption, readonly Option[]>;
 
