@@ -1,4 +1,4 @@
-import { type Option, type OptionGroup as OptionGroupType } from '../components/Configurator/types';
+import { type Option } from '../components/Configurator/types';
 import OptionButton from './OptionButton';
 import styles from './OptionGroup.module.css';
 
