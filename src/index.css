@@ -1,11 +1,18 @@
 
 :root {
   --text: black;
+  --subtext: #9C9B9B;
   --text-grey: rgba(0, 0, 0, 0.50); 
   --bg: white;
   --border: black;
   --designbtn-bg: #E2DFDB;
   --not-active: #CDCDCD;
+  --gold: #E7D392;
+  --silver: #CDCDCD;
+  --black: #000;
+  --brown: #4E3B27;
+  --west-fill: linear-gradient(180deg, #2159A7 0%, #F75210 100%);
+  --white: #FFF;
 
   --sans: "Jost", sans-serif;
   --serif: "Lora", serif;
@@ -41,5 +48,68 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
+}
+
+/* ============================================================================
+   OPTION BUTTON MATERIAL & COLOR STYLES
+   ============================================================================ */
+
+/* Material buttons - show texture images */
+.steel {
+  background-image: url('./assets/materials/metal.png') !important;
+}
+
+.leather {
+  background-image: url('./assets/materials/leather.png') !important;
+}
+
+/* Steel color options */
+.steel-gold {
+  background-color: var(--gold) !important;
+}
+
+.steel-silver {
+  background-color: var(--silver) !important;
+}
+
+/* Leather color options */
+.leather-brown {
+  background-color: var(--brown) !important;
+}
+
+.leather-black {
+  background-color: var(--black) !important;
+}
+
+/* Dial color options */
+.dial-west {
+  background: var(--west-fill) !important;
+}
+
+.dial-black {
+  background-color: var(--black) !important;
+}
+
+.dial-white {
+  background-color: var(--white) !important;
+}
+
+/* Dial details background options */
+.dial-details-west {
+  background: var(--west-fill) !important;
+}
+
+.dial-details-black {
+  background-color: var(--black) !important;
+}
+
+.dial-details-white {
+  background-color: var(--white) !important;
+}
+
+/* Dial details index options - transparent */
+.dial-index-with,
+.dial-index-without {
+  background-color: transparent !important;
 }
 
