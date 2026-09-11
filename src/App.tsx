@@ -1,13 +1,12 @@
 import './App.css'
-import { Layout } from './components/layout/Layout'
-import CanvasComponent from './components/CanvasComponent'
-//import TestButtonGroup from './components/TestButtonGroup'
-//import { ZoomButton } from './molecules/ZoomButton'
-import { CameraProvider } from './context/CameraContext'
-import type { ViewId } from './components/CameraController'
 import { useState } from 'react'
-import ConfigurationPanel from './components/Configurator/ConfigurationPanel/ConfigurationPanel'
 import { WatchConfigProvider } from './context/WatchConfigContext'
+import { Layout } from './components/layout/Layout'
+import { CameraProvider } from './context/CameraContext'
+import ConfigurationPanel from './components/Configurator/ConfigurationPanel/ConfigurationPanel'
+import CanvasComponent from './components/CanvasComponent'
+import type { ViewId } from './components/CameraController'
+//import TestButtonGroup from './components/TestButtonGroup'
 
 function App() {
   const [currentView, /*setCurrentView*/] = useState<ViewId>('top');

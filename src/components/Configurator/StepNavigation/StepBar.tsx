@@ -14,7 +14,7 @@ export function StepBar({currentStep}: {currentStep: string | undefined}) {
   // Calculate the index of the active step for the indicator
   const activeStep = Object.keys(STEP_NAMES).findIndex((step) => step === currentStep);
   const indicatorStyle = {
-  transform: `translateX(${activeStep * 125}%)`
+  transform: `translateX(${activeStep * 168}%)`
 };
 
   return (

@@ -5,7 +5,7 @@ button {
     background-color: var(--designbtn-bg);
     padding: 0 1rem;
     font-size: var(--md);
-    color: var(--color-text);
+    color: var(--text);
     cursor: pointer;
     display: flex;
     align-items: center;

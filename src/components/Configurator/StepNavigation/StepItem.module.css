@@ -1,7 +1,7 @@
 .step {
     text-align: center;
     font-size: var(--lg);
-    color: var(--color-text);
+    color: var(--text);
     flex: 1;
 }
 
