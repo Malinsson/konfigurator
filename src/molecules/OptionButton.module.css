@@ -1,0 +1,63 @@
+/* OptionButton - Circular Design */
+
+/* Base circular button */
+.button {
+  width: 1.875rem;
+  height: 1.875rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 0.5px solid rgba(0, 0, 0, 0.30);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Focus state - shows underline for keyboard navigation (accessibility) */
+.button:focus::after {
+  content: '';
+  position: absolute;
+  bottom: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(1.875rem - 0.22rem);
+  height: 1px;
+  background-color: var(--silver);
+}
+
+
+/* ============================================================================
+   HOVER STATE - Shows silver underline
+   ============================================================================ */
+
+.button:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(1.875rem - 0.22rem);
+  height: 1px;
+  background-color: var(--silver);
+}
+
+/* ============================================================================
+   SELECTED STATE - Shows black underline
+   ============================================================================ */
+
+.button.selected::after {
+  content: '';
+  position: absolute;
+  bottom: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(1.875rem - 0.22rem);
+  height: 1px;
+  background-color: #000;
+}
+

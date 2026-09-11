@@ -1,0 +1,51 @@
+/* OptionGroup Styles */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 .75rem 0;
+  align-items: flex-start;
+}
+
+.container > :first-child {
+  margin-bottom: 0;
+}
+
+.label + .subtext {
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.subtext {
+  color: var(--subtext);
+  font-size: 0.625rem;
+  font-style: normal;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: block;
+}
+
+.optionsGrid {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.optionButtonWrapper {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
