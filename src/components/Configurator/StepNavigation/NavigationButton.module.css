@@ -1,0 +1,23 @@
+button {
+    width: 85px;
+    height: 33px;
+    border: 1px solid var(--border);
+    background-color: var(--designbtn-bg);
+    padding: 0 1rem;
+    font-size: var(--md);
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    background-color: white;
+}
+
+.icon {
+    height: 1rem;
+    width: auto;
+}

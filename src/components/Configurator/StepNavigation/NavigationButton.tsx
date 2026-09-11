@@ -1,4 +1,5 @@
 import styles from './NavigationButton.module.css';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 type NavigationButtonProps = {
   stepDirection: 'next' | 'back';
@@ -7,12 +8,26 @@ type NavigationButtonProps = {
 };
 
 export function NavigationButton({ stepDirection, isActive, onClick }: NavigationButtonProps) {
-  return (
-    <button
-      className={`${styles.navigationButton} ${isActive ? styles.active : ''}`}
-      onClick={onClick}
-    >
-      {stepDirection === 'next' ? 'Next' : 'Back'}
-    </button>
-  );
+
+    if (stepDirection === 'next') {
+        return (
+            <button
+                className={`${styles.navigationButton} ${isActive ? styles.active : ''}`}
+                onClick={onClick}
+            >
+                Next
+                <ChevronRightIcon className={styles.icon} />
+            </button>
+        );
+    }
+
+    return (
+        <button
+        className={`${styles.navigationButton} ${isActive ? styles.active : ''}`}
+        onClick={onClick}
+        >
+                <ChevronLeftIcon className={styles.icon} />
+                Back
+        </button>
+    );
 }
