@@ -7,15 +7,17 @@ import { CameraProvider } from './context/CameraContext'
 import type { ViewId } from './components/CameraController'
 import { useState } from 'react'
 import ConfigurationPanel from './components/Configurator/ConfigurationPanel/ConfigurationPanel'
+import { WatchConfigProvider } from './context/WatchConfigContext'
 
 function App() {
-  const [currentView, setCurrentView] = useState<ViewId>('top')
+  const [currentView, setCurrentView] = useState<ViewId>('top');
 
   return (
     <CameraProvider>
-      <Layout>
-        <ConfigurationPanel />
-        <CanvasComponent view={currentView} />
+      <WatchConfigProvider>
+        <Layout>
+          <ConfigurationPanel />
+          <CanvasComponent view={currentView} />
 
         {/* Connect the function of these buttons to each step in the configuraton 
         <TestButtonGroup>
@@ -25,8 +27,8 @@ function App() {
         </TestButtonGroup>
       */}
 
-
-      </Layout>
+        </Layout>
+      </WatchConfigProvider>
     </CameraProvider>
   )
 }
