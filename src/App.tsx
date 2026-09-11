@@ -10,7 +10,7 @@ import ConfigurationPanel from './components/Configurator/ConfigurationPanel/Con
 import { WatchConfigProvider } from './context/WatchConfigContext'
 
 function App() {
-  const [currentView, setCurrentView] = useState<ViewId>('top');
+  const [currentView, /*setCurrentView*/] = useState<ViewId>('top');
 
   return (
     <CameraProvider>
