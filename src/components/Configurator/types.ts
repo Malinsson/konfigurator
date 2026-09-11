@@ -2,7 +2,7 @@
 export interface Option {
   id: string;
   label: string;
-  [key: string]: any; // Optional, can be used for additional data
+  [key: string]: unknown; // Optional, can be used for additional data
 }
 
 export interface OptionGroup {
@@ -23,19 +23,33 @@ export interface BandOption {
 }
 
 // CONSTANT - the actual data that matches the interface
-export const BAND_OPTIONS: BandMaterialOption[] = [
-  { id: 'gold', label: 'Gold', materialType: 'metal' },
-  { id: 'silver', label: 'Silver', materialType: 'metal' },
-  { id: 'brown', label: 'Brown', materialType: 'leather' },
-  { id: 'black', label: 'Black', materialType: 'leather' },
-  { id: 'black-rubber', label: 'Black', materialType: 'rubber' },
-  { id: 'white-rubber', label: 'White', materialType: 'rubber' },
-];
+ export const BAND_OPTIONS: OptionGroup = {
+   label: 'Band',
+   options: [
+     { id: 'metal', label: 'Metal' },
+     { id: 'leather', label: 'Leather' },
+     { id: 'rubber', label: 'Rubber' },
+   ],
+   subOptions: {
+     metal: [
+       { id: 'gold', label: 'Gold' },
+       { id: 'silver', label: 'Silver' },
+     ],
+     leather: [
+       { id: 'brown', label: 'Brown' },
+       { id: 'black', label: 'Black' },
+     ],
+     rubber: [
+       { id: 'black-rubber', label: 'Black' },
+       { id: 'white-rubber', label: 'White' },
+     ],
+   },
+ } as const satisfies OptionGroup;
 
 // Dial Color Configuration
 export interface DialColorOption {
   id: string;
-  label: string; // 'Gold' | 'Silver'
+  label: string;
   value: string;
 }
 
@@ -54,13 +68,13 @@ export const DIAL_DETAILS_OPTIONS = {
   background: [
     { id: 'gothenburg', label: 'Gothenburg' },
     { id: 'white', label: 'White' },
-    { id: 'black', label: 'Black' }
+    { id: 'black', label: 'Black' },
   ],
   index: [
     { id: 'with-lines', label: 'With Index Lines' },
-    { id: 'without-lines', label: 'Without Index Lines' }
-  ]
-};
+     { id: 'without-lines', label: 'Without Index Lines' },
+   ],
+ } as const satisfies Record<keyof DialDetailsOption, readonly Option[]>;
 
 // Overall Watch Configuration State
 export interface WatchConfiguration {
