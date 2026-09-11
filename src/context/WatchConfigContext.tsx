@@ -15,7 +15,7 @@ export interface BandSelection {
 
 // Dial Details selection structure
 export interface DialDetailsSelection {
-  background: 'gothenburg' | 'white' | 'black' | null;
+  background: 'west' | 'white' | 'black' | null;
   index: 'with-lines' | 'without-lines' | null;
 }
 

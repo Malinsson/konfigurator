@@ -5,6 +5,8 @@
   flex-direction: column;
   padding: 0 0 .75rem 0;
   align-items: flex-start;
+  border: none;
+  margin: 0;
 }
 
 .container > :first-child {
