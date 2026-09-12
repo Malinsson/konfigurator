@@ -4,6 +4,7 @@ button {
     border: 1px solid var(--border);
     background-color: var(--designbtn-bg);
     padding: 0 1rem;
+    font-family: var(--sans);
     font-size: var(--md);
     color: var(--text);
     cursor: pointer;

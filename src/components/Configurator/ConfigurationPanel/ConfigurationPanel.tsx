@@ -21,7 +21,7 @@ export default function ConfigurationPanel() {
   const StepContent = STEP_CONTENT[currentStep];
 
   return (
-    <article className={`${currentStep === 'start' || currentStep === 'overview' ? styles.centerPosition : styles.configurationPanel}`}>
+    <article className={styles.configurationPanel}>
       <div className={styles.container}>
 
         {currentStep !== 'overview' && <ConfigurationHeader />}
