@@ -13,6 +13,16 @@ export function ConfigurationFooter({currentStep, goToNextStep, goToPreviousStep
   switch (currentStep) {
     case 'overview':
       return null;
+    case 'start':
+      return (
+      <div className={`${styles.stepFooter} ${styles.firstStepFooter}`}>
+        <NavigationButton 
+        stepDirection="next" 
+        buttonText="Design your watch"
+        className={styles.startButton}
+        onClick={goToNextStep} />
+      </div>
+      );
     case 'band':
       return (
         <div className={`${styles.stepFooter} ${styles.firstStepFooter}`}>

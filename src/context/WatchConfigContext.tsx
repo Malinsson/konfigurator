@@ -5,7 +5,7 @@ import { createContext, useContext, useState, type ReactNode } from 'react';
 // ============================================================================
 
 // Define what each step looks like
-export type Step = 'band' | 'dialColor' | 'dialDetails' | 'overview';
+export type Step = 'start' | 'band' | 'dialColor' | 'dialDetails' | 'overview';
 
 export type StepName = {
   [key in Step]: string;
@@ -74,12 +74,12 @@ interface WatchConfigProviderProps {
 
 export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
   // State
-  const [currentStep, setCurrentStep] = useState<Step>('band');
+  const [currentStep, setCurrentStep] = useState<Step>('start');
   const [selections, setSelections] = useState<WatchSelections>(DEFAULT_SELECTIONS);
   const [isStarted, setIsStarted] = useState(false);
 
   // Step order for navigation
-  const STEP_ORDER: Step[] = ['band', 'dialColor', 'dialDetails', 'overview'];
+  const STEP_ORDER: Step[] = ['start', 'band', 'dialColor', 'dialDetails', 'overview'];
 
   // Actions
   const startConfigurator = () => {
@@ -131,7 +131,7 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
 
   const resetConfigurator = () => {
     setIsStarted(false);
-    setCurrentStep('band');
+    setCurrentStep('start');
     setSelections(DEFAULT_SELECTIONS);
   };
 

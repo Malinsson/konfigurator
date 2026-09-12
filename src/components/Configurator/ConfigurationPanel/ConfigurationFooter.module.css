@@ -7,3 +7,8 @@
 .firstStepFooter {
   justify-content: flex-end;
 }
+
+.startButton {
+  width: 100%;
+  padding: 0.5rem 0;
+}
