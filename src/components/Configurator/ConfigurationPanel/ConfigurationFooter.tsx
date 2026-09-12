@@ -10,14 +10,21 @@ type ConfigurationFooterProps = {
 
 export function ConfigurationFooter({currentStep, goToNextStep, goToPreviousStep}: ConfigurationFooterProps) {
 
-    if (currentStep === 'overview') {
-        return
-    };
-
-    return (
+  switch (currentStep) {
+    case 'overview':
+      return null;
+    case 'band':
+      return (
+        <div className={`${styles.stepFooter} ${styles.firstStepFooter}`}>
+            <NavigationButton stepDirection="next" onClick={goToNextStep} />
+        </div>
+    );
+    default:
+      return (
         <div className={styles.stepFooter}>
           <NavigationButton stepDirection="back" onClick={goToPreviousStep} />
           <NavigationButton stepDirection="next" onClick={goToNextStep} />
         </div>
     );
+  }
 }
