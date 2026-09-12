@@ -1,7 +1,7 @@
 import styles from './CanvasComponent.module.css'
 import { useRef, /*useState*/ } from 'react'
 import { Canvas, type ThreeElements } from '@react-three/fiber'
-import { useGLTF } from '@react-three/drei'
+import { Environment, useGLTF } from '@react-three/drei'
 import { CameraController, type ViewId } from './CameraController'
 import * as THREE from 'three'
 import clock_base from '../assets/models/clock_base.glb?url'
@@ -31,6 +31,7 @@ function CanvasComponent({view}: {view: ViewId}) {
   return (
     <section className={styles.home}>
       <Canvas>
+        <Environment preset="studio" background={false} />
         <CameraController view={view} />
         <ambientLight intensity={Math.PI / 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
