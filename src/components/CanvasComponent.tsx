@@ -2,7 +2,7 @@ import styles from './CanvasComponent.module.css'
 import { useRef, /*useState*/ } from 'react'
 import { Canvas, type ThreeElements } from '@react-three/fiber'
 import { Environment, useGLTF } from '@react-three/drei'
-import { CameraController, type ViewId } from './CameraController'
+import { CameraController } from './CameraController'
 import * as THREE from 'three'
 import clock_base from '../assets/models/clock_base.glb?url'
 
@@ -26,17 +26,20 @@ function Clock(props: ThreeElements['group']) {
   )
 }
 
-function CanvasComponent({view}: {view: ViewId}) {
+function CanvasComponent() {
 
   return (
     <section className={styles.home}>
       <Canvas>
         <Environment preset="studio" background={false} />
-        <CameraController view={view} />
+        <CameraController />
         <ambientLight intensity={Math.PI / 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-        <Clock position={[-1.5, 0, -11]} /> {/* Should be 0, 0, 0 but moved back to avoid clipping with camera */}
+        <Clock
+          position={[-10, 0, 0]}
+          rotation={[0, Math.PI / 2, 0]}
+        /> {/* Should be 0, 0, 0 but moved back to avoid clipping with camera */}
       </Canvas>
     </section>
   )

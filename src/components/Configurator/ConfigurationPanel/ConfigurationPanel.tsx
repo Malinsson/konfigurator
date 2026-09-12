@@ -8,6 +8,7 @@ import DialDetailsStep from '../StepContent/DialDetailsStep';
 import { ConfigurationFooter } from './ConfigurationFooter';
 
 export default function ConfigurationPanel() {
+
   const { currentStep, goToNextStep, goToPreviousStep } = useWatchConfig();
 
   return (
