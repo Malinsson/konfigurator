@@ -6,7 +6,9 @@
     width: 100%;
     gap: 4rem;
 }
-
+.logo {
+    font-weight: 300;
+}
 .logo, .shoppingBagIcon {
     cursor: pointer;
 }

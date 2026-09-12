@@ -1,11 +1,11 @@
 import styles from './ConfigurationPanel.module.css';
-import { NavigationButton } from '../StepNavigation/NavigationButton';
 import { useWatchConfig } from '../../../context/WatchConfigContext';
 import { ConfigurationHeader } from './ConfigurationHeader';
 import BandStep from '../StepContent/BandStep';
 import DialColorStep from '../StepContent/DialColorStep';
 import OverviewStep from '../StepContent/OverviewStep';
 import DialDetailsStep from '../StepContent/DialDetailsStep';
+import { ConfigurationFooter } from './ConfigurationFooter';
 
 export default function ConfigurationPanel() {
   const { currentStep, goToNextStep, goToPreviousStep } = useWatchConfig();
@@ -21,10 +21,11 @@ export default function ConfigurationPanel() {
         {currentStep === 'dialDetails' && <DialDetailsStep />}
         {currentStep === 'overview' && <OverviewStep />}
 
-        <div className={styles.stepFooter}>
-          <NavigationButton stepDirection="back" isActive={currentStep !== 'band'} onClick={goToPreviousStep} />
-          <NavigationButton stepDirection="next" isActive={currentStep !== 'overview'} onClick={goToNextStep} />
-        </div>
+        <ConfigurationFooter
+          currentStep={currentStep}
+          goToNextStep={goToNextStep}
+          goToPreviousStep={goToPreviousStep}
+        />
       </div>
     </article>
   );
