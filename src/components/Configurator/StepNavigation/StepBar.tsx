@@ -2,7 +2,9 @@ import type { StepName } from '../../../context/WatchConfigContext';
 import styles from './StepBar.module.css';
 import { StepItem } from './StepItem';
 
-export const STEP_NAMES: StepName = {
+type Steps = Omit<StepName, 'start'>; // Exclude 'start' from the steps
+
+export const STEP_NAMES: Steps = {
   band: '1. Strap',
   dialColor: '2. Dial Color',
   dialDetails: '3. Dial Style & Detail',
@@ -23,7 +25,7 @@ export function StepBar({currentStep}: {currentStep: string | undefined}) {
       <div className={styles.stepBarLine} style={indicatorStyle}></div>
 
       {Object.entries(STEP_NAMES).map(([step, name]) => (
-        <StepItem key={step} step={name} isActive={currentStep === step} />
+        <StepItem key={step} step={name} isActive={currentStep === step || currentStep === 'start'} />
       ))}
 
     </div>
