@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: flex-start;
   height: 100%;
-  margin-top: 11rem;
+  margin-top: clamp(3rem, 8%, 10rem);
   padding: 0;
 }
 
