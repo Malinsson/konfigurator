@@ -15,7 +15,7 @@ button {
 }
 
 button:hover {
-    background-color: white;
+    background-color: var(--bg);
 }
 
 .icon {
