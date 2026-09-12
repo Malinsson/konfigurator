@@ -142,7 +142,7 @@
   width: 100%;
   height: 33px;
   border: 1px solid var(--border);
-  background-color: white;
+  background-color: var(--designbtn-bg);
   padding: .5rem 0;
   font-family: var(--sans);
   font-size: 1rem;
@@ -158,7 +158,7 @@
 }
 
 .addToCartButton:hover {
-  background-color: var(--designbtn-bg);
+  background-color: var(--bg);
 }
 
 .addToCartIcon {
