@@ -8,6 +8,7 @@
 }
 .logo {
     font-weight: 300;
+    font-size: 2.5rem;
 }
 .logo, .shoppingBagIcon {
     cursor: pointer;
