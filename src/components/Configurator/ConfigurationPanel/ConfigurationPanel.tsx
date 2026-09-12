@@ -1,5 +1,6 @@
 import styles from './ConfigurationPanel.module.css';
-import { useWatchConfig } from '../../../context/WatchConfigContext';
+import { type ComponentType } from 'react';
+import { useWatchConfig, type Step } from '../../../context/WatchConfigContext';
 import { ConfigurationHeader } from './ConfigurationHeader';
 import BandStep from '../StepContent/BandStep';
 import DialColorStep from '../StepContent/DialColorStep';
@@ -7,20 +8,25 @@ import OverviewStep from '../StepContent/OverviewStep';
 import DialDetailsStep from '../StepContent/DialDetailsStep';
 import { ConfigurationFooter } from './ConfigurationFooter';
 
+const STEP_CONTENT: Partial<Record<Step, ComponentType>> = {
+  band: BandStep,
+  dialColor: DialColorStep,
+  dialDetails: DialDetailsStep,
+  overview: OverviewStep,
+};
+
 export default function ConfigurationPanel() {
 
   const { currentStep, goToNextStep, goToPreviousStep } = useWatchConfig();
+  const StepContent = STEP_CONTENT[currentStep];
 
   return (
-    <article className={styles.configurationPanel}>
+    <article className={`${currentStep === 'start' || currentStep === 'overview' ? styles.centerPosition : styles.configurationPanel}`}>
       <div className={styles.container}>
 
-        <ConfigurationHeader />
+        {currentStep !== 'overview' && <ConfigurationHeader />}
 
-        {currentStep === 'band' && <BandStep />}
-        {currentStep === 'dialColor' && <DialColorStep />}
-        {currentStep === 'dialDetails' && <DialDetailsStep />}
-        {currentStep === 'overview' && <OverviewStep />}
+        {StepContent && <StepContent />}
 
         <ConfigurationFooter
           currentStep={currentStep}

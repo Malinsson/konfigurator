@@ -1,12 +1,24 @@
-.configurationPanel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100% - 70px);
-    margin: 0;
-    padding: 0;
+
+.centerPosition {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+.configurationPanel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  margin-top: 11rem;
+  padding: 0;
+}
+
 
 .container {
   display: flex;
