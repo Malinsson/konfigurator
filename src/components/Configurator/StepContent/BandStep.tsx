@@ -47,9 +47,6 @@ export default function BandStep() {
   return (
     <div className={styles.container}>
       
-      {/* Section Header */}
-
-
       <div className={styles.options}>
 
         {/* Step Header */}
@@ -80,9 +77,7 @@ export default function BandStep() {
         </div>
 
       </div>
-      <div className={styles.stepFooter}>
-        <span>Placeholder for NavButtons</span>
-      </div>
+
     </div>
   );
 }

@@ -44,15 +44,6 @@ export default function DialDetailsStep() {
 
   return (
     <div className={styles.container}>
-      
-      {/* Section Header */}
-      <div className={styles.sectionHeader}>
-        <div className={styles.header}>
-          <h1>Nord</h1>
-          <span>Defined by you</span>
-        </div>
-        <p>Refined proportions and considered details give Unica its timeless character. Designed to adapt effortlessly to your style.</p>
-      </div>
 
       <div className={styles.options}>
 
@@ -84,9 +75,7 @@ export default function DialDetailsStep() {
         </div>
 
       </div>
-      <div className={styles.stepFooter}>
-        <span>Placeholder for NavButtons</span>
-      </div>
+
     </div>
   );
 }
