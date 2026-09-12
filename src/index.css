@@ -82,6 +82,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Dial color options */
+.dial-gold {
+  background-color: var(--gold) !important;
+}
+
+.dial-silver {
+  background-color: var(--silver) !important;
+}
+
 .dial-west {
   background: var(--west-fill) !important;
 }
@@ -107,9 +115,21 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--white) !important;
 }
 
-/* Dial details index options - transparent */
-.dial-index-with,
-.dial-index-without {
+/* Dial details index options - inactive/not selected */
+.dial-index-with {
+  background-image: url('./assets/icons/index-icon-inactive.svg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: transparent !important;
+}
+
+/* Dial details index options - active/selected */
+button.dial-index-with.selected {
+  background-image: url('./assets/icons/index-icon.svg') !important;
+}
+
+.dial-index-without {
+  background-color: var(--white) !important;
 }
 
