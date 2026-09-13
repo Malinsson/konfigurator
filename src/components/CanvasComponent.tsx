@@ -13,6 +13,15 @@ function Clock(props: ThreeElements['group']) {
   const groupRef = useRef<THREE.Group>(null)
   const { selections } = useWatchConfig()
 
+  // Log mesh structure for debugging (runs once on mount)
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (!(child as THREE.Mesh).isMesh) return
+      const mesh = child as THREE.Mesh
+      console.log('Mesh name:', mesh.name, 'Material:', mesh.material)
+    })
+  }, [scene])
+
   useEffect(() => {
     const bandColor = ({
       gold: 0xd4af37,
@@ -31,6 +40,7 @@ function Clock(props: ThreeElements['group']) {
 
       const color = mesh.name === 'Plane.015' ? bandColor : dialColor
       const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material]
+
 
       materials.forEach((material) => {
         if ('color' in material) {
