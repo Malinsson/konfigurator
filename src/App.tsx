@@ -1,42 +1,22 @@
-import CanvasComponent from './components/CanvasComponent'
 import './App.css'
-import TestLayout from './components/TestLayout'
-import TestButtonGroup from './components/TestButtonGroup'
-//import { ZoomButton } from './molecules/ZoomButton'
-import { CameraProvider } from './context/CameraContext'
 import { WatchConfigProvider } from './context/WatchConfigContext'
-import { Header } from './components/header/header'
-import type { ViewId } from './components/CameraController'
-import { useState } from 'react'
+import { Layout } from './components/layout/Layout'
+import { CameraProvider } from './context/CameraContext'
+import ConfigurationPanel from './components/Configurator/ConfigurationPanel/ConfigurationPanel'
+import CanvasComponent from './components/CanvasComponent'
 
 function App() {
-  const [currentView, setCurrentView] = useState<ViewId>('top')
-
   return (
-    <WatchConfigProvider>
-      <CameraProvider>
-        <TestLayout>
-          <Header />
-          <CanvasComponent view={currentView} />
+    <CameraProvider>
+      <WatchConfigProvider>
 
-          {/* Connect the function of these buttons to each step in the configuraton */}
-          <TestButtonGroup>
-            <button onClick={() => setCurrentView('top')}>Top View</button>
-            <button onClick={() => setCurrentView('face')}>Face View</button>
-            <button onClick={() => setCurrentView('band')}>Band View</button>
-          </TestButtonGroup>
+        <Layout>
+          <ConfigurationPanel />
+          <CanvasComponent />
+        </Layout>
 
-        {/*
-        <TestButtonGroup>
-          <ZoomButton hotspotName="front" />
-          <ZoomButton hotspotName="top" />
-          <ZoomButton hotspotName="side" />
-        </TestButtonGroup>
-        */}
-
-      </TestLayout>
-      </CameraProvider>
-    </WatchConfigProvider>
+      </WatchConfigProvider>
+    </CameraProvider>
   )
 }
 

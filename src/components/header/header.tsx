@@ -5,7 +5,7 @@ import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 export function Header() {
   return (
     <header className={styles.header}>
-      <h1 className={styles.logo}>LOGO</h1>
+      <h1 className={styles.logo}>UNICA</h1>
       <nav>
         <ul>
           <li><a href="#">Products</a></li>

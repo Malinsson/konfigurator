@@ -5,18 +5,22 @@ import { createContext, useContext, useState, type ReactNode } from 'react';
 // ============================================================================
 
 // Define what each step looks like
-export type Step = 'band' | 'dialColor' | 'dialDetails';
+export type Step = 'start' | 'band' | 'dialColor' | 'dialDetails' | 'overview';
+
+export type StepName = {
+  [key in Step]: string;
+};
 
 // Band selection structure
 export interface BandSelection {
-  category: 'metal' | 'leather' | 'rubber' | null;
+  category: 'steel' | 'leather' | null;
   type: string | null; // 'gold', 'silver', 'brown', 'black', 'white'
 }
 
 // Dial Details selection structure
 export interface DialDetailsSelection {
-  background: 'gothenburg' | 'white' | 'black' | null;
-  index: 'with-lines' | 'without-lines' | null;
+  background: 'west' | 'white' | 'black' | null;
+  index: 'with' | 'without' | null;
 }
 
 // All user selections
@@ -70,12 +74,12 @@ interface WatchConfigProviderProps {
 
 export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
   // State
-  const [currentStep, setCurrentStep] = useState<Step>('band');
+  const [currentStep, setCurrentStep] = useState<Step>('start');
   const [selections, setSelections] = useState<WatchSelections>(DEFAULT_SELECTIONS);
   const [isStarted, setIsStarted] = useState(false);
 
   // Step order for navigation
-  const STEP_ORDER: Step[] = ['band', 'dialColor', 'dialDetails'];
+  const STEP_ORDER: Step[] = ['start', 'band', 'dialColor', 'dialDetails', 'overview'];
 
   // Actions
   const startConfigurator = () => {
@@ -127,7 +131,7 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
 
   const resetConfigurator = () => {
     setIsStarted(false);
-    setCurrentStep('band');
+    setCurrentStep('start');
     setSelections(DEFAULT_SELECTIONS);
   };
 

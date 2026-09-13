@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { CameraControls } from '@react-three/drei'
+import { useWatchConfig, type Step } from '../context/WatchConfigContext'
 
 
 export type ViewId = 'top' | 'face' | 'band';
@@ -40,14 +41,25 @@ const VIEWS: Record<ViewId, ViewConfig> = {
   },
 }
 
-export function CameraController({ view }: { view: ViewId }) {
+export function CameraController() {
+    const { currentStep } = useWatchConfig()
     const controlsRef = useRef<CameraControls>(null)
+
+    const stepViews: Record<Step, ViewId> = {
+      start: 'top',
+      band: 'band',
+      dialColor: 'face',
+      dialDetails: 'face',
+      overview: 'top',
+    }
+
+    const activeView = stepViews[currentStep]
 
     useEffect(() => {
       const controls = controlsRef.current
       if (!controls) return
       
-      const cfg = VIEWS[view]
+      const cfg = VIEWS[activeView]
       
       controls.minPolarAngle = cfg.minPolar
       controls.maxPolarAngle = cfg.maxPolar
@@ -60,7 +72,7 @@ export function CameraController({ view }: { view: ViewId }) {
         ...cfg.target,
         true // enableTransition
       )
-    }, [view])
+    }, [activeView])
   
   return <CameraControls ref={controlsRef} makeDefault />
   

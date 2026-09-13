@@ -31,8 +31,8 @@ export function WatchConfigExample() {
 
       {/* Example: Update band selection */}
       <h3>Band Selection Buttons:</h3>
-      <button onClick={() => updateBandSelection('metal', 'gold')}>
-        Select Gold Metal
+      <button onClick={() => updateBandSelection('steel', 'gold')}>
+        Select Gold Steel
       </button>
       <button onClick={() => updateBandSelection('leather', 'brown')}>
         Select Brown Leather
