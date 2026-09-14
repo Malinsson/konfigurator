@@ -12,7 +12,7 @@ import styles from './StepContent.module.css';
  *
  * Flow:
  * 1. User selects an index option (with or without lines)
- * 2. User selects a background option (west, white, or black)
+ * 2. User selects a background option (white or black)
  * 3. updateDialDetails updates context and 3D model
  */
 
@@ -21,11 +21,11 @@ export default function DialDetailsStep() {
 
   // Set defaults if not selected yet
   const selectedIndex = selections.dialDetails?.index || 'with';
-  const selectedBackground = selections.dialDetails?.background || 'west';
+  const selectedBackground = selections.dialDetails?.background || 'white';
 
   // Handle background selection
   const handleBackgroundSelect = (backgroundId: string) => {
-    updateDialDetails(backgroundId as 'west' | 'black' | 'white', selectedIndex);
+    updateDialDetails(backgroundId as 'white' | 'black', selectedIndex);
   };
 
   // Handle index selection
@@ -36,7 +36,7 @@ export default function DialDetailsStep() {
   // Initialize defaults on first render
   React.useEffect(() => {
     if (!selections.dialDetails?.background || !selections.dialDetails?.index) {
-      updateDialDetails('west', 'with');
+      updateDialDetails('white', 'with');
     }
   }, [selections.dialDetails, updateDialDetails]);
 
