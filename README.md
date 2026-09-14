@@ -13,7 +13,7 @@ A browser-based watch configurator built with React, TypeScript, Vite, and Three
 - Camera zoom-to-hotspot support for focused views of the 3D model
 - Responsive component styling with CSS Modules
 
-The current prototype uses a fixed total price of **2500 kr**. The “Add to Cart” action currently logs the selected configuration to the browser console and does not connect to a backend or shopping cart service.
+The current prototype uses a fixed total price of **2500 kr**. The “Add to Cart” action currently logs the selected configuration to the browser console and does not connect to a backend or shopping cart service as this project is solely focused on the configuration aspect.
 
 ## Tech Stack
 
