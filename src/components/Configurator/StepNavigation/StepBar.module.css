@@ -14,8 +14,8 @@
 
 .stepBarLine {
     position: absolute;
-    top: -0.75px;
-    height: 0.0625rem;
+    top: -1px;
+    height: 1px;
     background-color: var(--border);
 
 }
