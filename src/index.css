@@ -11,7 +11,6 @@
   --silver: #CDCDCD;
   --black: #000;
   --brown: #4E3B27;
-  --west-fill: linear-gradient(180deg, #2159A7 0%, #F75210 100%);
   --white: #FFF;
 
   --sans: "Jost", sans-serif;
@@ -90,10 +89,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--silver) !important;
 }
 
-.dial-west {
-  background: var(--west-fill) !important;
-}
-
 .dial-black {
   background-color: var(--black) !important;
 }
@@ -103,10 +98,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Dial details background options */
-.dial-details-west {
-  background: var(--west-fill) !important;
-}
-
 .dial-details-black {
   background-color: var(--black) !important;
 }

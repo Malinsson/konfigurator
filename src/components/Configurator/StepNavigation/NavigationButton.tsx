@@ -3,18 +3,24 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 type NavigationButtonProps = {
   stepDirection: 'next' | 'back';
-  onClick: () => void;
+  active?: boolean;
+  onClick?: () => void;
   buttonText?: string;
   className?: string;
 };
 
-export function NavigationButton({ stepDirection, onClick, buttonText = stepDirection === 'next' ? 'Next' : 'Back', className }: NavigationButtonProps) {
+export function NavigationButton({ 
+    stepDirection, 
+    active = true,
+    onClick, 
+    buttonText = stepDirection === 'next' ? 'Next' : 'Back', 
+    className }: NavigationButtonProps) {
 
     if (stepDirection === 'next') {
         return (
             <button
-                className={`${styles.navigationButton} ${className || ''}`}
-                onClick={onClick}
+                className={`${styles.navigationButton} ${className || ''} ${!active ? styles.disabled : ''}`}
+                onClick={onClick} 
             >
                 {buttonText}
                 <ChevronRightIcon className={styles.icon} />
@@ -24,7 +30,7 @@ export function NavigationButton({ stepDirection, onClick, buttonText = stepDire
 
     return (
         <button
-        className={`${styles.navigationButton} ${className || ''}`}
+        className={`${styles.navigationButton} ${className || ''} ${!active ? styles.disabled : ''}`}
         onClick={onClick}
         >
                 <ChevronLeftIcon className={styles.icon} />

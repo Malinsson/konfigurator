@@ -7,6 +7,11 @@ import * as THREE from 'three'
 import clock_base from '../assets/models/clock_base.glb?url'
 import { useWatchConfig } from '../context/WatchConfigContext'
 
+// Add COnstant name for dial details mesh when we get it
+const BAND_MESH_NAME = 'metal013'
+const DIAL_MESH_NAME = 'Circle004'
+
+
 // Clock model component - loads and displays the clock.glb model
 function Clock(props: ThreeElements['group']) {
   const { scene } = useGLTF(clock_base)
@@ -23,13 +28,18 @@ function Clock(props: ThreeElements['group']) {
   }, [scene])
 
   useEffect(() => {
+    // Update the colors of the band and dial meshes based on user selections
     const bandColor = ({
       gold: 0xd4af37,
       silver: 0xc0c0c0,
       brown: 0x6b3f24,
       black: 0x1b1b1b,
     }[selections.band.type || 'silver'] ?? 0xc0c0c0)
+
+    // Set dial color based on selection
     const dialColor = selections.dialColor === 'gold' ? 0xd4af37 : 0xc0c0c0
+
+    // Add a set dial details color if we have a mesh for it in the future
 
     scene.traverse((child) => {
       if (!(child as THREE.Mesh).isMesh) return
@@ -38,9 +48,10 @@ function Clock(props: ThreeElements['group']) {
       mesh.castShadow = true
       mesh.receiveShadow = true
 
-      const color = mesh.name === 'Plane.015' ? bandColor : dialColor
-      const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material]
+      if (mesh.name !== BAND_MESH_NAME && mesh.name !== DIAL_MESH_NAME) return
 
+      const color = mesh.name === BAND_MESH_NAME ? bandColor : dialColor
+      const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material]
 
       materials.forEach((material) => {
         if ('color' in material) {
@@ -74,7 +85,7 @@ function CanvasComponent() {
         <Clock
           position={[-10, 0, 0]}
           rotation={[0, Math.PI / 2, 0]}
-        /> {/* Should be 0, 0, 0 but moved back to avoid clipping with camera */}
+        /> {/* Position should be 0, 0, 0 but moved back to avoid clipping with camera */}
       </Canvas>
     </section>
   )

@@ -2,7 +2,7 @@ button {
     width: 85px;
     height: 33px;
     border: 1px solid var(--border);
-    background-color: var(--designbtn-bg);
+    background-color: var(--bg);
     padding: 0 1rem;
     font-family: var(--sans);
     font-size: var(--m);
@@ -12,13 +12,21 @@ button {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    user-select: none;
 }
 
 button:hover {
-    background-color: var(--bg);
+    background-color: var(--designbtn-bg);
 }
 
 .icon {
     height: 1rem;
     width: auto;
+}
+
+.disabled {
+    pointer-events: none;
+    border: 1px solid var(--not-active);
+    color: var(--not-active);
+    background-color: var(--bg);
 }
