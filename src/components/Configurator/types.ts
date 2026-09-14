@@ -55,15 +55,14 @@ export const DIAL_COLOR_OPTIONS: DialColorOption[] = [
 
 // Dial Details Configuration
 export interface DialDetailsOption {
-  background: 'west' | 'black' | 'white';
+  background: 'black' | 'white';
   index: 'with' | 'without';
 }
 
 export const DIAL_DETAILS_OPTIONS = {
   background: [
-    { id: 'west', label: 'West' },
-    { id: 'black', label: 'Black' },
     { id: 'white', label: 'White' },
+    { id: 'black', label: 'Black' },
   ],
   index: [
     { id: 'with', label: 'With Index Lines' },

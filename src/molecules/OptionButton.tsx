@@ -14,7 +14,7 @@ import styles from './OptionButton.module.css';
  *
  * Styling variants handled via CSS classes based on context:
  * - Material options: background images from assets/materials
- * - Color options: background fills using CSS variables (--gold, --silver, --black, --brown, --west-fill, --white)
+ * - Color options: background fills using CSS variables (--gold, --silver, --black, --brown, --white)
  *
  * Usage:
  * <OptionButton
