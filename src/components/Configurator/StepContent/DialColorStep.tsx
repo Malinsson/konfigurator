@@ -7,7 +7,7 @@ import styles from './StepContent.module.css';
 /**
  * DialColorStep Component
  *
- * Second step of the watch configurator.
+ * Fourth step of the watch configurator.
  * Allows user to select dial color (Silver or Gold).
  *
  * Flow:

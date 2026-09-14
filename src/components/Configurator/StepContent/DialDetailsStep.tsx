@@ -7,7 +7,7 @@ import styles from './StepContent.module.css';
 /**
  * DialDetailsStep Component
  *
- * Fourth step of the watch configurator.
+ * Third step of the watch configurator.
  * Allows user to select dial index lines and color.
  *
  * Flow:
