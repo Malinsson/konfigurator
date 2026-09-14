@@ -88,7 +88,7 @@ export default function OverviewStep() {
         {/* Price and Cart Section */}
         <div className={`${styles.optionsSection} ${styles.priceSection}`}>
           <p className={styles.priceText}>
-            Total Price: <span className={styles.priceAmount}>2500kr</span>
+            Total Price: <span className={styles.priceAmount}>2500 sek</span>
           </p>
           <button
             className={styles.addToCartButton}

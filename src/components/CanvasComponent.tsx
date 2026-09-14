@@ -1,11 +1,15 @@
 import styles from './CanvasComponent.module.css'
-import { useEffect, useRef } from 'react'
+import { Suspense, useEffect, useRef } from 'react'
 import { Canvas, type ThreeElements } from '@react-three/fiber'
 import { Environment, useGLTF } from '@react-three/drei'
 import { CameraController } from './CameraController'
 import * as THREE from 'three'
 import clock_base from '../assets/models/clock_base.glb?url'
 import { useWatchConfig } from '../context/WatchConfigContext'
+import { WatchBody } from './modelComponents/WatchBody'
+import { WatchBand } from './modelComponents/MetalBand'
+import { WatchIndex } from './modelComponents/WatchIndex'
+import { WatchBackground } from './modelComponents/WatchBackground'
 
 // Add COnstant name for dial details mesh when we get it
 const BAND_MESH_NAME = 'metal013'
@@ -82,10 +86,17 @@ function CanvasComponent() {
         <ambientLight intensity={Math.PI / 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+        <Suspense fallback={null}>
+          {/*
         <Clock
           position={[-10, 0, 0]}
           rotation={[0, Math.PI / 2, 0]}
-        /> {/* Position should be 0, 0, 0 but moved back to avoid clipping with camera */}
+        />  Position should be 0, 0, 0 but moved back to avoid clipping with camera */}
+        < WatchBody color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#c0c0c0'} />
+        < WatchBand color={useWatchConfig().selections.band.type === 'gold' ? '#d4af37' : '#c0c0c0'} />
+        < WatchIndex color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#c0c0c0'} />
+        < WatchBackground color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#c0c0c0'} />
+        </Suspense>
       </Canvas>
     </section>
   )
