@@ -21,8 +21,15 @@ export function StepBar({currentStep}: {currentStep: string | undefined}) {
   // Calculate the index of the active step for the indicator
   const activeStep = Object.keys(STEP_NAMES).findIndex((step) => step === currentStep);
 
-  // Update line width and position when active step changes
-  useEffect(() => {
+  // Calculate line width and position
+  const updateLineGeometry = () => {
+    // Clear line when no active step (e.g., on reset or start screen)
+    if (activeStep === -1) {
+      setLineWidth(0);
+      setLineLeft(0);
+      return;
+    }
+
     const activeStepKey = Object.keys(STEP_NAMES)[activeStep];
     const activeStepElement = stepRefs.current[activeStepKey];
     const container = containerRef.current;
@@ -40,6 +47,18 @@ export function StepBar({currentStep}: {currentStep: string | undefined}) {
 
       setLineLeft(lineLeftPosition);
     }
+  };
+
+  // Update on active step change
+  useEffect(() => {
+    updateLineGeometry();
+  }, [activeStep]);
+
+  // Recalculate on resize
+  useEffect(() => {
+    const handleResize = () => updateLineGeometry();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [activeStep]);
 
   const indicatorStyle = {
