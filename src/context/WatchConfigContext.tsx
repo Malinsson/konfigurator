@@ -27,7 +27,7 @@ export interface DialDetailsSelection {
 export interface WatchSelections {
   band: BandSelection;
   watchCaseColor: 'gold' | 'silver' | null;
-  dialColor: 'gold' | 'silver' | null;
+  dialColor: 'black' | 'white' | null;
   dialDetails: DialDetailsSelection;
 }
 
@@ -45,7 +45,7 @@ export interface WatchConfigContextType {
   goToPreviousStep: () => void;
   updateBandSelection: (category: BandSelection['category'], type: string) => void;
   updateWatchCaseColor: (color: 'gold' | 'silver') => void;
-  updateDialColor: (color: 'gold' | 'silver') => void;
+  updateDialColor: (color: 'black' | 'white') => void;
   updateDialDetails: (color: DialDetailsSelection['color'], index: DialDetailsSelection['index']) => void;
   resetConfigurator: () => void;
 }
@@ -122,7 +122,7 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
     }));
   };
 
-  const updateDialColor = (color: 'gold' | 'silver') => {
+  const updateDialColor = (color: 'black' | 'white') => {
     setSelections((prev) => ({
       ...prev,
       dialColor: color,

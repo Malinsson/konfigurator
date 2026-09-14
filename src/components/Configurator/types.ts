@@ -49,6 +49,12 @@ export interface DialColorOption {
 }
 
 export const DIAL_COLOR_OPTIONS: DialColorOption[] = [
+  { id: 'white', label: 'White', value: '#FFFFFF' },
+  { id: 'black', label: 'Black', value: '#000000' },
+];
+
+// Watch Case Color Configuration
+export const WATCH_CASE_COLOR_OPTIONS: DialColorOption[] = [
   { id: 'silver', label: 'Silver', value: '#C0C0C0' },
   { id: 'gold', label: 'Gold', value: '#FFD700' },
 ];

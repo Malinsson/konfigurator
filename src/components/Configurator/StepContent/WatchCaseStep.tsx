@@ -1,6 +1,6 @@
 import React from 'react';
 import { useWatchConfig } from '../../../context/WatchConfigContext';
-import { DIAL_COLOR_OPTIONS } from '../types';
+import { WATCH_CASE_COLOR_OPTIONS } from '../types';
 import OptionGroup from '../../../molecules/OptionGroup';
 import styles from './StepContent.module.css';
 
@@ -23,7 +23,7 @@ export default function WatchCaseStep() {
 
   // Handle color selection
   const handleColorSelect = (colorId: string) => {
-    updateWatchCaseColor(colorId as 'gold' | 'silver');
+    updateWatchCaseColor(colorId as 'silver' | 'gold');
   };
 
   // Initialize defaults on first render
@@ -47,10 +47,10 @@ export default function WatchCaseStep() {
         <div className={styles.optionsSection}>
           <OptionGroup
             label="Color"
-            options={DIAL_COLOR_OPTIONS.map(opt => ({ id: opt.id, label: opt.label }))}
+            options={WATCH_CASE_COLOR_OPTIONS.map(opt => ({ id: opt.id, label: opt.label }))}
             currentSelection={selectedColor}
             onSelect={handleColorSelect}
-            cssClassPrefix="dial"
+            cssClassPrefix="steel"
           />
         </div>
 

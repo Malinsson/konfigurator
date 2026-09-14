@@ -19,17 +19,17 @@ export default function DialColorStep() {
   const { selections, updateDialColor } = useWatchConfig();
 
   // Set defaults if not selected yet
-  const selectedColor = selections.dialColor || 'silver';
+  const selectedColor = selections.dialColor || 'white';
 
   // Handle color selection
   const handleColorSelect = (colorId: string) => {
-    updateDialColor(colorId as 'gold' | 'silver');
+    updateDialColor(colorId as 'black' | 'white');
   };
 
   // Initialize defaults on first render
   React.useEffect(() => {
     if (!selections.dialColor) {
-      updateDialColor('silver');
+      updateDialColor('white');
     }
   }, [selections.dialColor, updateDialColor]);
 
