@@ -1,6 +1,6 @@
 import styles from './header.module.css'
-import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 import unicaLogo from '../../assets/logos/unica-logo.png'
+import cartIcon from '../../assets/icons/cart-icon.svg'
 
 
 export function Header() {
@@ -14,7 +14,7 @@ export function Header() {
           <li><a href="#">Contact</a></li>
         </ul>
       </nav>
-      <ShoppingBagIcon className={styles.shoppingBagIcon} />
+      <img src={cartIcon} alt="Shopping cart" className={styles.shoppingBagIcon} />
     </header>
   )
 }
