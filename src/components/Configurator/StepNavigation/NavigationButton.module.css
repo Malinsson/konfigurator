@@ -2,7 +2,7 @@ button {
     width: 85px;
     height: 33px;
     border: 1px solid var(--border);
-    background-color: var(--designbtn-bg);
+    background-color: var(--bg);
     padding: 0 1rem;
     font-family: var(--sans);
     font-size: var(--m);
@@ -16,7 +16,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--bg);
+    background-color: var(--designbtn-bg);
 }
 
 .icon {
