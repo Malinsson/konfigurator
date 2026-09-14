@@ -1,32 +1,109 @@
-# React + TypeScript + Vite
+# Watch Configurator
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A browser-based watch configurator built with React, TypeScript, Vite, and Three.js. Users can customize a 3D watch by selecting the strap, dial color, and dial details, then review the complete configuration before adding it to the cart.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Interactive 3D watch preview rendered with React Three Fiber
+- Strap material and color selection
+- Dial color selection
+- Dial index and background/detail selection
+- Step-by-step configuration panel with previous/next navigation
+- Overview of all selected options and the current total price
+- Camera zoom-to-hotspot support for focused views of the 3D model
+- Responsive component styling with CSS Modules
 
-## React Compiler
+The current prototype uses a fixed total price of **2500 kr**. The “Add to Cart” action currently logs the selected configuration to the browser console and does not connect to a backend or shopping cart service.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the Oxlint configuration
+- React 19
+- TypeScript
+- Vite
+- Three.js with `@react-three/fiber` and `@react-three/drei`
+- CSS Modules
+- Oxlint
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Getting Started
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+### Prerequisites
+
+- Node.js 20 or newer
+- npm
+
+### Installation
+
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Start the development server
+
+```bash
+npm run dev
+```
+
+Vite will print the local URL in the terminal, usually `http://localhost:5173`.
+
+### Create a production build
+
+```bash
+npm run build
+```
+
+### Preview the production build
+
+```bash
+npm run preview
+```
+
+### Run linting
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```text
+src/
+├── assets/
+│   ├── icons/                 UI icons
+│   ├── materials/             Material assets
+│   └── models/                3D models, including the watch GLB
+├── atoms/                     Small reusable UI primitives
+├── components/
+│   ├── Configurator/          Configuration flow and option steps
+│   ├── CanvasComponent.tsx    Three.js canvas and watch model
+│   ├── CameraController.tsx   Camera integration
+│   ├── header/                Application header
+│   └── layout/                Main page layout
+├── config/                    Camera hotspot configuration
+├── context/
+│   ├── CameraContext.tsx      Shared camera and zoom state
+│   └── WatchConfigContext.tsx Shared configuration state
+├── hooks/                     Reusable interaction logic
+├── molecules/                 Composed UI controls, including zoom buttons
+├── App.tsx                    Application composition
+└── main.tsx                   React entry point
+```
+
+## How It Works
+
+`WatchConfigContext` stores the active step and the user's selections. The configuration panel renders the relevant step component and updates that shared state. `CanvasComponent` reads the selections and updates the watch model's materials so the 3D preview reflects the current configuration.
+
+Camera zoom is managed separately through `CameraContext`, `CameraController`, and the `useZoomToSpot` hook. Zoom targets can be adjusted in `src/config/hotspots.config.ts`.
+
+## Adding or Changing Options
+
+The available strap, dial color, and dial detail options are defined in:
+
+```text
+src/components/Configurator/types.ts
+```
+
+When adding an option, update the relevant option list and confirm that the corresponding step component and model-material logic handle its value. For new zoom locations, add a hotspot to `src/config/hotspots.config.ts` and use `ZoomButton` or `useCameraContext` to trigger it.
+
+## Related Documentation
+
+- [3D camera zoom setup guide](src/ZOOM_SETUP_GUIDE.md)
