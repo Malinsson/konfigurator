@@ -5,35 +5,33 @@ import OptionGroup from '../../../molecules/OptionGroup';
 import styles from './StepContent.module.css';
 
 /**
- * DialColorStep Component
+ * WatchCaseStep Component
  *
  * Second step of the watch configurator.
- * Allows user to select dial color (Silver or Gold).
+ * Allows user to select watch case color (Silver or Gold).
  *
  * Flow:
  * 1. User selects a color option
- * 2. updateDialColor updates context and 3D model
+ * 2. updateWatchCaseColor updates context and 3D model
  */
 
-export default function DialColorStep() {
-  const { selections, updateDialColor } = useWatchConfig();
+export default function WatchCaseStep() {
+  const { selections, updateWatchCaseColor } = useWatchConfig();
 
   // Set defaults if not selected yet
-  const selectedColor = selections.dialColor || 'silver';
+  const selectedColor = selections.watchCaseColor || 'silver';
 
   // Handle color selection
   const handleColorSelect = (colorId: string) => {
-    updateDialColor(colorId as 'gold' | 'silver');
+    updateWatchCaseColor(colorId as 'gold' | 'silver');
   };
 
   // Initialize defaults on first render
   React.useEffect(() => {
-    if (!selections.dialColor) {
-      updateDialColor('silver');
+    if (!selections.watchCaseColor) {
+      updateWatchCaseColor('silver');
     }
-  }, [selections.dialColor, updateDialColor]);
-
-
+  }, [selections.watchCaseColor, updateWatchCaseColor]);
 
   return (
     <div className={styles.container}>
@@ -42,13 +40,13 @@ export default function DialColorStep() {
 
         {/* Step Header */}
         <div className={styles.stepHeader}>
-          <h2>4. Dial Color</h2>
+          <h2>2. Watch Case</h2>
         </div>
 
-        {/* Dial Color Options */}
+        {/* Watch Case Color Options */}
         <div className={styles.optionsSection}>
           <OptionGroup
-            label="Dial Color"
+            label="Color"
             options={DIAL_COLOR_OPTIONS.map(opt => ({ id: opt.id, label: opt.label }))}
             currentSelection={selectedColor}
             onSelect={handleColorSelect}

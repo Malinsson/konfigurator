@@ -11,8 +11,9 @@ import styles from './OverviewStep.module.css';
  *
  * Shows:
  * - Selected band material and color
+ * - Selected watch case color
+ * - Selected dial details (index and color)
  * - Selected dial color
- * - Selected dial details (index and background)
  * - Total price
  */
 
@@ -30,12 +31,16 @@ export default function OverviewStep() {
       )?.label
     : null;
 
-  const dialColorLabel = DIAL_COLOR_OPTIONS.find(
-    (opt) => opt.id === selections.dialColor
+  const watchCaseColorLabel = DIAL_COLOR_OPTIONS.find(
+    (opt) => opt.id === selections.watchCaseColor
   )?.label;
 
-  const dialBackgroundLabel = DIAL_DETAILS_OPTIONS.background.find(
-    (opt) => opt.id === selections.dialDetails?.background
+  const dialDetailsColorLabel = DIAL_DETAILS_OPTIONS.color.find(
+    (opt) => opt.id === selections.dialDetails?.color
+  )?.label;
+
+  const dialColorLabel = DIAL_COLOR_OPTIONS.find(
+    (opt) => opt.id === selections.dialColor
   )?.label;
 
   const indexYesNo = !selections.dialDetails?.index ? '—' : selections.dialDetails.index === 'with' ? 'Yes' : 'No';
@@ -61,25 +66,35 @@ export default function OverviewStep() {
             </div>
             </div>
 
-            {/* Dial Color Section */}
+            {/* Watch Case Section */}
             <div className={styles.optionsSection}>
-            <h2>2. Dial Color</h2>
+            <h2>2. Watch Case</h2>
             <div className={styles.sectionContent}>
                 <p>
-                Color: {dialColorLabel || '—'}
+                Color: {watchCaseColorLabel || '—'}
                 </p>
             </div>
             </div>
 
-            {/* Dial Style & Details Section */}
+            {/* Index & Details Section */}
             <div className={styles.optionsSection}>
-            <h2>3. Dial Style & Details</h2>
+            <h2>3. Index & Details</h2>
             <div className={styles.sectionContent}>
                 <p>
                 Index: {indexYesNo}
                 </p>
                 <p>
-                Color: {dialBackgroundLabel || '—'}
+                Color: {dialDetailsColorLabel || '—'}
+                </p>
+            </div>
+            </div>
+
+            {/* Dial Color Section */}
+            <div className={styles.optionsSection}>
+            <h2>4. Dial Color</h2>
+            <div className={styles.sectionContent}>
+                <p>
+                Color: {dialColorLabel || '—'}
                 </p>
             </div>
             </div>

@@ -48,8 +48,9 @@ export function CameraController() {
     const stepViews: Record<Step, ViewId> = {
       start: 'top',
       band: 'band',
-      dialColor: 'face',
+      watchCase: 'face',
       dialDetails: 'face',
+      dialColor: 'face',
       overview: 'top',
     }
 

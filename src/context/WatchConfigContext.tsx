@@ -5,7 +5,7 @@ import { createContext, useContext, useState, type ReactNode } from 'react';
 // ============================================================================
 
 // Define what each step looks like
-export type Step = 'start' | 'band' | 'dialColor' | 'dialDetails' | 'overview';
+export type Step = 'start' | 'band' | 'watchCase' | 'dialDetails' | 'dialColor' | 'overview';
 
 export type StepName = {
   [key in Step]: string;
@@ -19,13 +19,14 @@ export interface BandSelection {
 
 // Dial Details selection structure
 export interface DialDetailsSelection {
-  background: 'white' | 'black' | null;
+  color: 'silver' | 'gold' | null;
   index: 'with' | 'without' | null;
 }
 
 // All user selections
 export interface WatchSelections {
   band: BandSelection;
+  watchCaseColor: 'gold' | 'silver' | null;
   dialColor: 'gold' | 'silver' | null;
   dialDetails: DialDetailsSelection;
 }
@@ -43,8 +44,9 @@ export interface WatchConfigContextType {
   goToNextStep: () => void;
   goToPreviousStep: () => void;
   updateBandSelection: (category: BandSelection['category'], type: string) => void;
+  updateWatchCaseColor: (color: 'gold' | 'silver') => void;
   updateDialColor: (color: 'gold' | 'silver') => void;
-  updateDialDetails: (background: DialDetailsSelection['background'], index: DialDetailsSelection['index']) => void;
+  updateDialDetails: (color: DialDetailsSelection['color'], index: DialDetailsSelection['index']) => void;
   resetConfigurator: () => void;
 }
 
@@ -60,8 +62,9 @@ const WatchConfigContext = createContext<WatchConfigContextType | null>(null);
 
 const DEFAULT_SELECTIONS: WatchSelections = {
   band: { category: null, type: null },
+  watchCaseColor: null,
   dialColor: null,
-  dialDetails: { background: null, index: null },
+  dialDetails: { color: null, index: null },
 };
 
 // ============================================================================
@@ -79,7 +82,7 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
   const [isStarted, setIsStarted] = useState(false);
 
   // Step order for navigation
-  const STEP_ORDER: Step[] = ['start', 'band', 'dialColor', 'dialDetails', 'overview'];
+  const STEP_ORDER: Step[] = ['start', 'band', 'watchCase', 'dialDetails', 'dialColor', 'overview'];
 
   // Actions
   const startConfigurator = () => {
@@ -112,6 +115,13 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
     }));
   };
 
+  const updateWatchCaseColor = (color: 'gold' | 'silver') => {
+    setSelections((prev) => ({
+      ...prev,
+      watchCaseColor: color,
+    }));
+  };
+
   const updateDialColor = (color: 'gold' | 'silver') => {
     setSelections((prev) => ({
       ...prev,
@@ -120,12 +130,12 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
   };
 
   const updateDialDetails = (
-    background: DialDetailsSelection['background'],
+    color: DialDetailsSelection['color'],
     index: DialDetailsSelection['index']
   ) => {
     setSelections((prev) => ({
       ...prev,
-      dialDetails: { background, index },
+      dialDetails: { color, index },
     }));
   };
 
@@ -145,6 +155,7 @@ export function WatchConfigProvider({ children }: WatchConfigProviderProps) {
     goToNextStep,
     goToPreviousStep,
     updateBandSelection,
+    updateWatchCaseColor,
     updateDialColor,
     updateDialDetails,
     resetConfigurator,
