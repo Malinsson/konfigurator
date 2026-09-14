@@ -1,10 +1,15 @@
 import styles from './StepItem.module.css';
+import { forwardRef } from 'react';
 
-export function StepItem({ step, isActive }: { step: string; isActive: boolean;}) {
-
+export const StepItem = forwardRef<HTMLDivElement, { step: string; isActive: boolean }>(
+  ({ step, isActive }, ref) => {
     return (
-        <div className={`${styles.step} ${isActive ? '' : styles.stepInactive}`}>
-            {step}
-        </div>
+      <div
+        ref={ref}
+        className={`${styles.step} ${isActive ? '' : styles.stepInactive}`}
+      >
+        {step}
+      </div>
     );
-}
+  }
+);
