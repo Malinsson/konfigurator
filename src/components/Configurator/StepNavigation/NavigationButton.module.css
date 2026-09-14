@@ -12,6 +12,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    user-select: none;
 }
 
 button:hover {
@@ -21,4 +22,11 @@ button:hover {
 .icon {
     height: 1rem;
     width: auto;
+}
+
+.disabled {
+    pointer-events: none;
+    border: 1px solid var(--not-active);
+    color: var(--not-active);
+    background-color: var(--bg);
 }
