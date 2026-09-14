@@ -1,10 +1,9 @@
 import styles from './CanvasComponent.module.css'
-import { Suspense, useEffect, useRef } from 'react'
-import { Canvas, type ThreeElements } from '@react-three/fiber'
-import { Environment, useGLTF } from '@react-three/drei'
+import { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { Environment } from '@react-three/drei'
 import { CameraController } from './CameraController'
-import * as THREE from 'three'
-import clock_base from '../assets/models/clock_base.glb?url'
+//import clock_base from '../assets/models/clock_base.glb?url'
 import { useWatchConfig } from '../context/WatchConfigContext'
 import { WatchBody } from './modelComponents/WatchBody'
 import { WatchBand } from './modelComponents/MetalBand'
@@ -12,12 +11,12 @@ import { WatchIndex } from './modelComponents/WatchIndex'
 import { WatchBackground } from './modelComponents/WatchBackground'
 
 // Add COnstant name for dial details mesh when we get it
-const BAND_MESH_NAME = 'metal013'
-const DIAL_MESH_NAME = 'Circle004'
+//const BAND_MESH_NAME = 'metal013'
+//const DIAL_MESH_NAME = 'Circle004'
 
 
 // Clock model component - loads and displays the clock.glb model
-function Clock(props: ThreeElements['group']) {
+/*function Clock(props: ThreeElements['group']) {
   const { scene } = useGLTF(clock_base)
   const groupRef = useRef<THREE.Group>(null)
   const { selections } = useWatchConfig()
@@ -75,27 +74,33 @@ function Clock(props: ThreeElements['group']) {
     </group>
   )
 }
-
+*/
 function CanvasComponent() {
 
   return (
     <section className={styles.home}>
       <Canvas>
-        <Environment preset="studio" background={false} />
+        <Environment preset="sunset" background={false} />
         <CameraController />
         <ambientLight intensity={Math.PI / 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
         <Suspense fallback={null}>
-          {/*
-        <Clock
-          position={[-10, 0, 0]}
-          rotation={[0, Math.PI / 2, 0]}
-        />  Position should be 0, 0, 0 but moved back to avoid clipping with camera */}
-        < WatchBody color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#c0c0c0'} />
-        < WatchBand color={useWatchConfig().selections.band.type === 'gold' ? '#d4af37' : '#c0c0c0'} />
-        < WatchIndex color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#c0c0c0'} />
-        < WatchBackground color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#c0c0c0'} />
+            {/*
+          <Clock
+            position={[-10, 0, 0]}
+            rotation={[0, Math.PI / 2, 0]}
+          />  Position should be 0, 0, 0 but moved back to avoid clipping with camera */}
+          < WatchBody 
+          bodyColor={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#b72121'}
+          clockArmsColor={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#2210ae'} />
+
+          < WatchBand color={useWatchConfig().selections.band.type === 'gold' ? '#d4af37' : '#aeff00'} />
+
+          < WatchIndex color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#af005e'} />
+
+          < WatchBackground color={useWatchConfig().selections.dialColor === 'gold' ? '#d4af37' : '#069fbe'} />
+
         </Suspense>
       </Canvas>
     </section>

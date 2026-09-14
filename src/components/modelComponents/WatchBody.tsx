@@ -3,28 +3,60 @@ import { useGLTF } from '@react-three/drei';
 import { useEffect, useMemo } from 'react'
 import * as THREE from 'three'
 
-export function WatchBody({color}: {color: string}) {
+type WatchBodyProps = {
+    bodyColor: string;
+    clockArmsColor: string;
+};
+
+export function WatchBody({bodyColor, clockArmsColor}: WatchBodyProps) {
     const { scene } = useGLTF(watch_body);
-
-    console.log('Loaded watch body model:', scene);
-
-    scene.traverse((child) => {
-        if (!(child as THREE.Mesh).isMesh) return;
-        const mesh = child as THREE.Mesh;
-        console.log('Mesh name:', mesh.name, 'Material:', mesh.material);
-    });
 
     const cloned = useMemo(() => scene.clone(true), [scene])
 
     useEffect(() => {
+        const meshColors: Record<string, string> = {
+            'watch_body': bodyColor,
+            'clock_arms': clockArmsColor,
+        };
+
         cloned.traverse((child) => {
-        if (child instanceof THREE.Mesh && child.name === 'FaceDial') {
-            const mat = (child.material as THREE.MeshStandardMaterial).clone()
-            mat.color.set(color)
-            child.material = mat
-        }
-        })
-    }, [cloned, color])
+            
+            if (!(child instanceof THREE.Mesh)) return;
+
+            if (child instanceof THREE.Mesh && child.name === 'glass') {
+                child.material = new THREE.MeshPhysicalMaterial({
+                    color: new THREE.Color('#eeeeee'),
+                    transparent: true,
+                    opacity: 0.3, // Adjust for frost
+                    transmission: 0.9, // Allows light through
+                    roughness: 0.6, // For that diffused frosted look
+                    metalness: 0,
+                    thickness: 1,
+                    ior: 1.3,
+                    clearcoat: 0.1,
+                    reflectivity: 0,
+                    envMapIntensity: 0.1, // Almost no reflections
+                    });
+                child.material.depthWrite = false; // Helps with transparency blending
+            }
+            
+            const color = meshColors[child.name];
+            if (!color) return;
+            
+            if (Array.isArray(child.material)) {
+                child.material = child.material.map((material) => {
+                    const clonedMaterial = material.clone();
+                    if ('color' in clonedMaterial) clonedMaterial.color.set(color);
+                    return clonedMaterial;
+                });
+            } else {
+                const clonedMaterial = child.material.clone();
+                if ('color' in clonedMaterial) clonedMaterial.color.set(color);
+                child.material = clonedMaterial;
+            }
+        });
+    }, [cloned, bodyColor, clockArmsColor]);
+
 
     return <primitive object={cloned} />;
 }
