@@ -1,0 +1,54 @@
+.header {
+    display: flex;
+    padding: 0 2rem ;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 4rem;
+}
+.logo {
+    height: 4.75rem;
+    width: auto;
+    /* padding: .9rem 0; */
+}
+.logo, .shoppingBagIcon {
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    gap: 4.56rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 3.75rem;
+    padding: 0;
+    margin: 1.81rem 0;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+li {
+    font-family: var(--serif);
+}
+
+li a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.shoppingBagIcon {
+    display: block;
+    width: 1.91406rem;
+    height: auto;
+}

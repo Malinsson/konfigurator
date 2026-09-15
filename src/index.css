@@ -1,23 +1,36 @@
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --text: black;
+  --subtext: #9C9B9B;
+  --text-grey: rgba(0, 0, 0, 0.50); 
+  --bg: #F8F8F8;
+  --border: black;
+  --designbtn-bg: #E2DFDB;
+  --not-active: #CDCDCD;
+  --gold: #E7D392;
+  --silver: #CDCDCD;
+  --black: #000;
+  --brown: #4E3B27;
+  --white: #FFF;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans: "Jost", sans-serif;
+  --serif: "Lora", serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  --light: 200;
+  --normal: 400;
+  --bold: 600;
+
+  --xs: 10px;
+  --s: 12px;
+  --m: 16px;
+  --lg: 20px;
+  --xl: 26px;
+  --xxl: 34px;
+
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: var(--m);
+  font-style: normal;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -25,8 +38,89 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+/* ============================================================================
+   OPTION BUTTON MATERIAL & COLOR STYLES
+   ============================================================================ */
+
+/* Material buttons - show texture images */
+.steel {
+  background-image: url('./assets/materials/metal.png') !important;
+}
+
+.leather {
+  background-image: url('./assets/materials/leather.png') !important;
+}
+
+/* Steel color options */
+.steel-gold {
+  background-color: var(--gold) !important;
+}
+
+.steel-silver {
+  background-color: var(--silver) !important;
+}
+
+/* Leather color options */
+.leather-brown {
+  background-color: var(--brown) !important;
+}
+
+.leather-black {
+  background-color: var(--black) !important;
+}
+
+/* Dial color options */
+.dial-gold {
+  background-color: var(--gold) !important;
+}
+
+.dial-silver {
+  background-color: var(--silver) !important;
+}
+
+.dial-black {
+  background-color: var(--black) !important;
+}
+
+.dial-white {
+  background-color: var(--white) !important;
+}
+
+/* Dial details background options */
+.dial-details-black {
+  background-color: var(--black) !important;
+}
+
+.dial-details-white {
+  background-color: var(--white) !important;
+}
+
+/* Dial details index options - inactive/not selected */
+.dial-index-with {
+  background-image: url('./assets/icons/index-icon-inactive.svg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent !important;
+}
+
+/* Dial details index options - active/selected */
+button.dial-index-with.selected {
+  background-image: url('./assets/icons/index-icon.svg') !important;
+}
+
+.dial-index-without {
+  background-color: var(--white) !important;
 }
 

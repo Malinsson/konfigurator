@@ -1,0 +1,10 @@
+.step {
+    text-align: center;
+    font-size: var(--lg);
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.stepInactive {
+    color: var(--not-active)
+}

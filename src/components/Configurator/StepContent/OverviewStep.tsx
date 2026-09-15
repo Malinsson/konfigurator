@@ -1,0 +1,120 @@
+import { useWatchConfig } from '../../../context/WatchConfigContext';
+import { BAND_OPTIONS, DIAL_COLOR_OPTIONS, DIAL_DETAILS_OPTIONS, WATCH_CASE_COLOR_OPTIONS } from '../types';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import styles from './OverviewStep.module.css';
+
+/**
+ * OverviewStep Component
+ *
+ * Final step of the watch configurator.
+ * Displays a summary of all user selections and allows them to add to cart.
+ *
+ * Shows:
+ * - Selected band material and color
+ * - Selected watch case color
+ * - Selected dial details (index and color)
+ * - Selected dial color
+ * - Total price
+ */
+
+export default function OverviewStep() {
+  const { selections } = useWatchConfig();
+
+  // Get labels for selections
+  const bandMaterialLabel = BAND_OPTIONS.options.find(
+    (opt) => opt.id === selections.band.category
+  )?.label;
+
+  const bandColorLabel = selections.band.category
+    ? BAND_OPTIONS.subOptions?.[selections.band.category]?.find(
+        (opt) => opt.id === selections.band.type
+      )?.label
+    : null;
+
+  const watchCaseColorLabel = WATCH_CASE_COLOR_OPTIONS.find(
+    (opt) => opt.id === selections.watchCaseColor
+  )?.label;
+
+  const dialDetailsColorLabel = DIAL_DETAILS_OPTIONS.color.find(
+    (opt) => opt.id === selections.dialDetails?.color
+  )?.label;
+
+  const dialColorLabel = DIAL_COLOR_OPTIONS.find(
+    (opt) => opt.id === selections.dialColor
+  )?.label;
+
+  const indexYesNo = !selections.dialDetails?.index ? '—' : selections.dialDetails.index === 'with' ? 'Yes' : 'No';
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.options}>
+        <div className={styles.overviewSection}>
+            <div className={styles.header}>
+            <h1>Your Configuration Overview</h1>
+            </div>
+
+            {/* Strap Section */}
+            <div className={styles.optionsSection}>
+            <h2>1. Strap</h2>
+            <div className={styles.sectionContent}>
+                <p>
+                Material: {bandMaterialLabel || '—'}
+                </p>
+                <p>
+                Color: {bandColorLabel || '—'}
+                </p>
+            </div>
+            </div>
+
+            {/* Watch Case Section */}
+            <div className={styles.optionsSection}>
+            <h2>2. Watch Case</h2>
+            <div className={styles.sectionContent}>
+                <p>
+                Color: {watchCaseColorLabel || '—'}
+                </p>
+            </div>
+            </div>
+
+            {/* Index & Details Section */}
+            <div className={styles.optionsSection}>
+            <h2>3. Index & Details</h2>
+            <div className={styles.sectionContent}>
+                <p>
+                Index: {indexYesNo}
+                </p>
+                <p>
+                Color: {dialDetailsColorLabel || '—'}
+                </p>
+            </div>
+            </div>
+
+            {/* Dial Color Section */}
+            <div className={styles.optionsSection}>
+            <h2>4. Dial Color</h2>
+            <div className={styles.sectionContent}>
+                <p>
+                Color: {dialColorLabel || '—'}
+                </p>
+            </div>
+            </div>
+        </div>
+
+        {/* Price and Cart Section */}
+        <div className={`${styles.optionsSection} ${styles.priceSection}`}>
+          <p className={styles.priceText}>
+            Total Price: <span className={styles.priceAmount}>2500 sek</span>
+          </p>
+          <button
+            className={styles.addToCartButton}
+            onClick={() => console.log('Add to cart:', selections)}
+          >
+            Add to Cart
+            <ChevronRightIcon className={styles.addToCartIcon} />
+          </button>
+        </div>
+      </div>
+
+    </div>
+  );
+}

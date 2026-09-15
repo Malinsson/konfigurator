@@ -1,0 +1,27 @@
+.configurationPanel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+.container {
+  display: flex;
+  width: 19.125rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+  max-height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding-right: 0.5rem;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
