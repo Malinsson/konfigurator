@@ -1,5 +1,5 @@
 import { useWatchConfig } from '../../../context/WatchConfigContext';
-import { BAND_OPTIONS, DIAL_COLOR_OPTIONS, DIAL_DETAILS_OPTIONS } from '../types';
+import { BAND_OPTIONS, DIAL_COLOR_OPTIONS, DIAL_DETAILS_OPTIONS, WATCH_CASE_COLOR_OPTIONS } from '../types';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import styles from './OverviewStep.module.css';
 
@@ -31,7 +31,7 @@ export default function OverviewStep() {
       )?.label
     : null;
 
-  const watchCaseColorLabel = DIAL_COLOR_OPTIONS.find(
+  const watchCaseColorLabel = WATCH_CASE_COLOR_OPTIONS.find(
     (opt) => opt.id === selections.watchCaseColor
   )?.label;
 
