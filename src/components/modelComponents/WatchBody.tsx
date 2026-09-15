@@ -17,28 +17,27 @@ export function WatchBody({bodyColor, clockArmsColor}: WatchBodyProps) {
     useEffect(() => {
         const meshColors: Record<string, string> = {
             'watch_body': bodyColor,
-            'Cylinder002' : bodyColor,
-            'Cylinder002_1' : clockArmsColor,
+            'watch_body001' : clockArmsColor,
+            'watch_body002' : clockArmsColor,
         };
 
         cloned.traverse((child) => {
 
-            
             if (!(child instanceof THREE.Mesh)) return;
 
             if (child instanceof THREE.Mesh && child.name === 'watch_body_glass') {
                 child.material = new THREE.MeshPhysicalMaterial({
                     color: new THREE.Color('#eeeeee'),
                     transparent: true,
-                    opacity: 0.2,
-                    transmission: 0.9, // Allows light through
-                    roughness: 0.2,
+                    opacity: 0.1,
+                    transmission: 1, // Allows light through
+                    roughness: 0.1,
                     metalness: 0,
-                    thickness: 1,
+                    thickness: 1.5,
                     ior: 1.7,
                     clearcoat: 0.5,
                     reflectivity: 0,
-                    envMapIntensity: 0.4, // Almost no reflections
+                    envMapIntensity: 0.3, // Almost no reflections
                     });
                 child.material.depthWrite = false; // Helps with transparency blending
             }

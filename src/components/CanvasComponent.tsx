@@ -8,15 +8,16 @@ import { WatchBody } from './modelComponents/WatchBody'
 import { WatchBand } from './modelComponents/WatchBand'
 import { WatchIndex } from './modelComponents/WatchIndex'
 import { WatchBackground } from './modelComponents/WatchBackground'
+import * as THREE from 'three'
 
 
 function CanvasComponent() {
   
   const { selections } = useWatchConfig();
 
-  const bodyColor = selections.watchCaseColor === 'gold' ? '#FFD700' : '#C0C0C0';
+  const bodyColor = selections.watchCaseColor === 'gold' ? '#d4af37' : '#C0C0C0';
 
-  const clockArmsColor = selections.dialDetails.color === 'gold' ? '#FFD700' : '#C0C0C0';
+  const clockArmsColor = selections.dialDetails.color === 'gold' ? '#d4af37' : '#C0C0C0';
 
   const indexColor = clockArmsColor; // Use the same color as clock arms for the index
 
@@ -24,26 +25,33 @@ function CanvasComponent() {
 
   const bandColor =
   selections.band.type === 'gold'
-    ? '#FFD700'
+    ? '#d4af37'
     : selections.band.type === 'silver'
       ? '#C0C0C0'
       : selections.band.type === 'brown'
-        ? '#8B4513'
+        ? '#3b2415'
         : '#111111';
 
   const showIndex = selections.dialDetails.index === 'with' ? true : false;
 
-  const backgroundColor = selections.dialColor === 'white' ? '#ffffff' : '#000000';
+  const backgroundColor = selections.dialColor === 'white' ? '#dfdfdf' : '#000000';
   
   
   return (
     <section className={styles.home}>
-      <Canvas camera= {{ fov: 50 }}>
-        <Environment preset="dawn" background={false} />
+      <Canvas 
+        camera= {{ fov: 50 }}
+        gl={{
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1, // tweak up/down to taste
+          antialias: true,
+        }}
+        >
+        <Environment preset="warehouse" background={false} />
         <CameraController />
         <ambientLight intensity={Math.PI / 2} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
-        <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+        <spotLight position={[15, 15, 15]} angle={0.15} penumbra={1} decay={0} intensity={0.4} />
+        <pointLight position={[-10, -10, -10]} decay={0} intensity={0.3} />
         <Suspense fallback={null}>
 
           < WatchBody 
@@ -52,7 +60,7 @@ function CanvasComponent() {
 
           < WatchBand 
             type={bandType} 
-            colors={bandType === 'steel' ? { strap: bandColor, clasp: bandColor } : { strap: bandColor, stitching: '#402b09', clasp: bodyColor }}
+            colors={bandType === 'steel' ? { strap: bandColor } : { strap: bandColor, stitching: '#402b09', clasp: bodyColor }}
           />
 
           {showIndex && <WatchIndex color={indexColor} />}
