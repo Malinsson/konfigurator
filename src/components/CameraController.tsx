@@ -2,8 +2,7 @@ import { useEffect, useRef } from 'react';
 import { CameraControls } from '@react-three/drei'
 import { useWatchConfig, type Step } from '../context/WatchConfigContext'
 
-
-export type ViewId = 'top' | 'face' | 'band';
+export type ViewId = 'top' | 'face' | 'band' | 'overview';
 
 type ViewConfig = {
   position: [number, number, number]
@@ -16,29 +15,37 @@ type ViewConfig = {
 
 const VIEWS: Record<ViewId, ViewConfig> = {
   top: {
-    position: [-0.05, 6, 0.5],
+    position: [0, 3, 0.02],
     target: [0, 0, 0],
-    minPolar: 0.5,
-    maxPolar: Math.PI / 2 - 0.05,
-    minAzimuth: -0.6,
-    maxAzimuth: 0.6,
+    minPolar: 0.05,
+    maxPolar: 0.35,
+    minAzimuth: -0.3,
+    maxAzimuth: 0.3,
   },
   face: {
-    position: [0, 3.8, 0.5],
+    position: [0, 3, 0.05], 
     target: [0, 0, 0],
     minPolar: 0.15,
     maxPolar: Math.PI / 2 - 0.05,
-    minAzimuth: -0.6,
-    maxAzimuth: 0.6,
+    minAzimuth: -Infinity,   
+    maxAzimuth: Infinity,
   },
   band: {
-    position: [0, -5, 0.45],
-    target: [0, -0.05, 0],
+    position: [2, 3, 2.5], 
+    target: [0, -1, 0],       
     minPolar: 0.2,
-    maxPolar: Math.PI - 0.2,
+    maxPolar: Math.PI - 0.2, 
     minAzimuth: -Math.PI,
-    maxAzimuth: Math.PI,
+    maxAzimuth: Math.PI,    
   },
+  overview: {
+    position: [1, 4, 2.5],
+    target: [0, -1, 0],
+    minPolar: 0.1,
+    maxPolar: Math.PI / 2 - 0.1,
+    minAzimuth: -Infinity,
+    maxAzimuth: Infinity,
+  }
 }
 
 export function CameraController() {
@@ -51,7 +58,7 @@ export function CameraController() {
       watchCase: 'face',
       dialDetails: 'face',
       dialColor: 'face',
-      overview: 'top',
+      overview: 'overview',
     }
 
     const activeView = stepViews[currentStep]
@@ -75,7 +82,7 @@ export function CameraController() {
       )
     }, [activeView])
   
-  return <CameraControls ref={controlsRef} makeDefault />
+  return <CameraControls ref={controlsRef} dollySpeed={0} makeDefault />
   
 
 }
