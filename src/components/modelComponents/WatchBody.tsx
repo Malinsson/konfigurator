@@ -9,7 +9,7 @@ type WatchBodyProps = {
 };
 
 export function WatchBody({bodyColor, clockArmsColor}: WatchBodyProps) {
-    
+
     const { scene } = useGLTF(watch_body);
 
     const cloned = useMemo(() => scene.clone(true), [scene])
