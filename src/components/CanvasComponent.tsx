@@ -1,5 +1,5 @@
 import styles from './CanvasComponent.module.css'
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import { CameraController } from './CameraController'
@@ -10,8 +10,6 @@ import { WatchIndex } from './modelComponents/WatchIndex'
 import { WatchBackground } from './modelComponents/WatchBackground'
 
 
-
-
 function CanvasComponent() {
   
   const { selections } = useWatchConfig();
@@ -20,6 +18,7 @@ function CanvasComponent() {
 
   const clockArmsColor = selections.dialColor === 'gold' ? '#d4af37' : '#2210ae';
 
+  //Preped for conditional rendering of the band type for when we get the leather band model
   //const bandType = selections.band.category === 'steel' ? 'steel' : 'leather';
 
   const bandColor =
@@ -34,13 +33,10 @@ function CanvasComponent() {
   const showIndex = selections.dialDetails.index === 'with' ? true : false;
 
   const indexColor = selections.dialColor === 'gold' ? '#d4af37' : '#2210ae';
-  
+
   const backgroundColor = selections.dialDetails.background === 'white' ? '#ffffff' : '#000000';
   
   
-
-  
-
   return (
     <section className={styles.home}>
       <Canvas>
