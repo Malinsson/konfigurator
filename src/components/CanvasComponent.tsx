@@ -16,7 +16,7 @@ function CanvasComponent() {
 
   const bodyColor = selections.watchCaseColor === 'gold' ? '#FFD700' : '#C0C0C0';
 
-  const clockArmsColor = selections.dialDetails.color === 'gold' ? '#d4af37' : '#2210ae';
+  const clockArmsColor = selections.dialDetails.color === 'gold' ? '#FFD700' : '#C0C0C0';
 
   const indexColor = clockArmsColor; // Use the same color as clock arms for the index
 

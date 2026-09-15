@@ -61,10 +61,10 @@ const WatchConfigContext = createContext<WatchConfigContextType | null>(null);
 // ============================================================================
 
 const DEFAULT_SELECTIONS: WatchSelections = {
-  band: { category: null, type: null },
-  watchCaseColor: null,
-  dialColor: null,
-  dialDetails: { color: null, index: null },
+  band: { category: 'steel', type: 'silver' },
+  watchCaseColor: 'silver',
+  dialColor: 'white',
+  dialDetails: { color: 'silver', index: 'with' },
 };
 
 // ============================================================================
