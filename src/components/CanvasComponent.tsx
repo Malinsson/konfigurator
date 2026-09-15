@@ -14,9 +14,11 @@ function CanvasComponent() {
   
   const { selections } = useWatchConfig();
 
-  const bodyColor = selections.dialColor === 'gold' ? '#FFD700' : '#C0C0C0';
+  const bodyColor = selections.watchCaseColor === 'gold' ? '#FFD700' : '#C0C0C0';
 
-  const clockArmsColor = selections.dialColor === 'gold' ? '#d4af37' : '#2210ae';
+  const clockArmsColor = selections.dialDetails.color === 'gold' ? '#d4af37' : '#2210ae';
+
+  const indexColor = clockArmsColor; // Use the same color as clock arms for the index
 
   //Preped for conditional rendering of the band type for when we get the leather band model
   //const bandType = selections.band.category === 'steel' ? 'steel' : 'leather';
@@ -32,9 +34,7 @@ function CanvasComponent() {
 
   const showIndex = selections.dialDetails.index === 'with' ? true : false;
 
-  const indexColor = selections.dialColor === 'gold' ? '#d4af37' : '#2210ae';
-
-  const backgroundColor = selections.dialDetails.background === 'white' ? '#ffffff' : '#000000';
+  const backgroundColor = selections.dialColor === 'white' ? '#ffffff' : '#000000';
   
   
   return (

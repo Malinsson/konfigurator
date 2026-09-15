@@ -8,11 +8,11 @@ import styles from './StepContent.module.css';
  * DialDetailsStep Component
  *
  * Third step of the watch configurator.
- * Allows user to select dial details (background and index lines).
+ * Allows user to select dial index lines and color.
  *
  * Flow:
  * 1. User selects an index option (with or without lines)
- * 2. User selects a background option (white or black)
+ * 2. User selects a color option (silver or gold)
  * 3. updateDialDetails updates context and 3D model
  */
 
@@ -21,22 +21,22 @@ export default function DialDetailsStep() {
 
   // Set defaults if not selected yet
   const selectedIndex = selections.dialDetails?.index || 'with';
-  const selectedBackground = selections.dialDetails?.background || 'white';
+  const selectedColor = selections.dialDetails?.color || 'silver';
 
-  // Handle background selection
-  const handleBackgroundSelect = (backgroundId: string) => {
-    updateDialDetails(backgroundId as 'white' | 'black', selectedIndex);
+  // Handle color selection
+  const handleColorSelect = (colorId: string) => {
+    updateDialDetails(colorId as 'silver' | 'gold', selectedIndex);
   };
 
   // Handle index selection
   const handleIndexSelect = (indexId: string) => {
-    updateDialDetails(selectedBackground, indexId as 'with' | 'without');
+    updateDialDetails(selectedColor, indexId as 'with' | 'without');
   };
 
   // Initialize defaults on first render
   React.useEffect(() => {
-    if (!selections.dialDetails?.background || !selections.dialDetails?.index) {
-      updateDialDetails('white', 'with');
+    if (!selections.dialDetails?.color || !selections.dialDetails?.index) {
+      updateDialDetails('silver', 'with');
     }
   }, [selections.dialDetails, updateDialDetails]);
 
@@ -49,7 +49,7 @@ export default function DialDetailsStep() {
 
         {/* Step Header */}
         <div className={styles.stepHeader}>
-          <h2>3. Dial Styles & Details</h2>
+          <h2>3. Index & Details</h2>
         </div>
 
         {/* Dial Index Options */}
@@ -63,14 +63,14 @@ export default function DialDetailsStep() {
           />
         </div>
 
-        {/* Dial Background Options */}
+        {/* Dial Color Options */}
         <div className={styles.optionsSection}>
           <OptionGroup
-            label="Background"
-            options={DIAL_DETAILS_OPTIONS.background.map(opt => ({ id: opt.id, label: opt.label }))}
-            currentSelection={selectedBackground}
-            onSelect={handleBackgroundSelect}
-            cssClassPrefix="dial-details"
+            label="Color"
+            options={DIAL_DETAILS_OPTIONS.color.map(opt => ({ id: opt.id, label: opt.label }))}
+            currentSelection={selectedColor}
+            onSelect={handleColorSelect}
+            cssClassPrefix="dial"
           />
         </div>
 

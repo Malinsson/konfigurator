@@ -49,20 +49,26 @@ export interface DialColorOption {
 }
 
 export const DIAL_COLOR_OPTIONS: DialColorOption[] = [
-  { id: 'gold', label: 'Gold', value: '#FFD700' },
+  { id: 'white', label: 'White', value: '#FFFFFF' },
+  { id: 'black', label: 'Black', value: '#000000' },
+];
+
+// Watch Case Color Configuration
+export const WATCH_CASE_COLOR_OPTIONS: DialColorOption[] = [
   { id: 'silver', label: 'Silver', value: '#C0C0C0' },
+  { id: 'gold', label: 'Gold', value: '#FFD700' },
 ];
 
 // Dial Details Configuration
 export interface DialDetailsOption {
-  background: 'black' | 'white';
+  color: 'silver' | 'gold';
   index: 'with' | 'without';
 }
 
 export const DIAL_DETAILS_OPTIONS = {
-  background: [
-    { id: 'white', label: 'White' },
-    { id: 'black', label: 'Black' },
+  color: [
+    { id: 'silver', label: 'Silver' },
+    { id: 'gold', label: 'Gold' },
   ],
   index: [
     { id: 'with', label: 'With Index Lines' },
