@@ -9,6 +9,7 @@ type WatchBodyProps = {
 };
 
 export function WatchBody({bodyColor, clockArmsColor}: WatchBodyProps) {
+    
     const { scene } = useGLTF(watch_body);
 
     const cloned = useMemo(() => scene.clone(true), [scene])
@@ -27,15 +28,15 @@ export function WatchBody({bodyColor, clockArmsColor}: WatchBodyProps) {
                 child.material = new THREE.MeshPhysicalMaterial({
                     color: new THREE.Color('#eeeeee'),
                     transparent: true,
-                    opacity: 0.3, // Adjust for frost
+                    opacity: 0.2,
                     transmission: 0.9, // Allows light through
-                    roughness: 0.6, // For that diffused frosted look
+                    roughness: 0.2,
                     metalness: 0,
                     thickness: 1,
-                    ior: 1.3,
-                    clearcoat: 0.1,
+                    ior: 1.7,
+                    clearcoat: 0.5,
                     reflectivity: 0,
-                    envMapIntensity: 0.1, // Almost no reflections
+                    envMapIntensity: 0.4, // Almost no reflections
                     });
                 child.material.depthWrite = false; // Helps with transparency blending
             }

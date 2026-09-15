@@ -10,17 +10,7 @@ export function WatchIndex({color}: {color: string}) {
 
     useEffect(() => {
         cloned.traverse((child) => {
-        if (child instanceof THREE.Mesh && child.name === 'index_small') {
-            const mat = (child.material as THREE.MeshStandardMaterial).clone()
-            mat.color.set(color)
-            child.material = mat
-        }
-        })
-    }, [cloned, color])
-
-    useEffect(() => {
-        cloned.traverse((child) => {
-        if (child instanceof THREE.Mesh && child.name === 'Index_big') {
+        if (child instanceof THREE.Mesh) {
             const mat = (child.material as THREE.MeshStandardMaterial).clone()
             mat.color.set(color)
             child.material = mat
