@@ -137,6 +137,10 @@
   width: 100%;
 }
 
+.priceAmount {
+    text-transform: uppercase;
+}
+
 
 .addToCartButton {
   width: 100%;

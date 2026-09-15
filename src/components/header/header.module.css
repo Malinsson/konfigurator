@@ -1,14 +1,13 @@
 .header {
     display: flex;
     padding: 0 2rem ;
-    margin-top: 1.32rem;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     gap: 4rem;
 }
 .logo {
-    height: 3.63rem;
+    height: 4.75rem;
     width: auto;
     /* padding: .9rem 0; */
 }
@@ -26,8 +25,13 @@ nav {
 ul {
     list-style: none;
     display: flex;
-    gap: 4rem;
+    gap: 3.75rem;
     padding: 0;
+    margin: 1.81rem 0;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 li {

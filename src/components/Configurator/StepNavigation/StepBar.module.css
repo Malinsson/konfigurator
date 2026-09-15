@@ -4,17 +4,26 @@
     margin: 0 2rem;
     width: calc(100% - 4rem);
     height: 70px;
-    padding: 1rem 3rem;
+    padding: 1rem .5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    border-top: 1px solid var(--not-active);
     background-color: var(--bg);
+}
+
+.stepBar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2rem;
+    width: 100vw;
+    height: 1px;
+    background-color: var(--not-active);
 }
 
 .stepBarLine {
     position: absolute;
-    top: -1px;
+    top: 0;
     height: 1px;
     background-color: var(--border);
 

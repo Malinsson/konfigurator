@@ -1,5 +1,5 @@
 import styles from './header.module.css'
-import unicaLogo from '../../assets/logos/unica-logo.png'
+import unicaLogo from '../../assets/logos/unica-logo.svg'
 import cartIcon from '../../assets/icons/cart-icon.svg'
 
 
