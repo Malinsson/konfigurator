@@ -40,7 +40,7 @@ function CanvasComponent() {
   return (
     <section className={styles.home}>
       <Canvas>
-        <Environment preset="sunset" background={false} />
+        <Environment preset="park" background={false} />
         <CameraController />
         <ambientLight intensity={Math.PI / 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
