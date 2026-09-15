@@ -5,7 +5,7 @@ import { Environment } from '@react-three/drei'
 import { CameraController } from './CameraController'
 import { useWatchConfig } from '../context/WatchConfigContext'
 import { WatchBody } from './modelComponents/WatchBody'
-import { WatchBand } from './modelComponents/MetalBand'
+import { WatchBand } from './modelComponents/WatchBand'
 import { WatchIndex } from './modelComponents/WatchIndex'
 import { WatchBackground } from './modelComponents/WatchBackground'
 
@@ -20,8 +20,7 @@ function CanvasComponent() {
 
   const indexColor = clockArmsColor; // Use the same color as clock arms for the index
 
-  //Preped for conditional rendering of the band type for when we get the leather band model
-  //const bandType = selections.band.category === 'steel' ? 'steel' : 'leather';
+  const bandType = selections.band.category === 'steel' ? 'steel' : 'leather';
 
   const bandColor =
   selections.band.type === 'gold'
@@ -48,10 +47,13 @@ function CanvasComponent() {
         <Suspense fallback={null}>
 
           < WatchBody 
-          bodyColor={bodyColor}
-          clockArmsColor={clockArmsColor} />
+            bodyColor={bodyColor}
+            clockArmsColor={clockArmsColor} />
 
-          < WatchBand color={bandColor} />
+          < WatchBand 
+            type={bandType} 
+            colors={bandType === 'steel' ? { strap: bandColor, clasp: bandColor } : { strap: bandColor, stitching: '#402b09', clasp: bodyColor }}
+          />
 
           {showIndex && <WatchIndex color={indexColor} />}
 
