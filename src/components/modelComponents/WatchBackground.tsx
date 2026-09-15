@@ -10,7 +10,6 @@ export function WatchBackground({color}: {color: string}) {
 
     useEffect(() => {
         cloned.traverse((child) => {
-            console.log(child.name);
 
         if (child instanceof THREE.Mesh && child.name === 'Cylinder005') {
             const mat = (child.material as THREE.MeshStandardMaterial).clone()
