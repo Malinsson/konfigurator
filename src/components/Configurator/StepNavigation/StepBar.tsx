@@ -7,9 +7,10 @@ type Steps = Omit<StepName, 'start'>; // Exclude 'start' from the steps
 
 export const STEP_NAMES: Steps = {
   band: '1. Strap',
-  dialColor: '2. Dial Color',
-  dialDetails: '3. Dial Style & Detail',
-  overview: '4. Overview'
+  watchCase: '2. Watch Case',
+  dialDetails: '3. Index & Details',
+  dialColor: '4. Dial Color',
+  overview: '5. Overview'
 };
 
 export function StepBar({currentStep}: {currentStep: string | undefined}) {

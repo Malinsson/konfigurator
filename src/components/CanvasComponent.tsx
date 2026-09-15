@@ -37,7 +37,10 @@ function Clock(props: ThreeElements['group']) {
     }[selections.band.type || 'silver'] ?? 0xc0c0c0)
 
     // Set dial color based on selection
-    const dialColor = selections.dialColor === 'gold' ? 0xd4af37 : 0xc0c0c0
+    const dialColor = ({
+      black: 0x1b1b1b,
+      white: 0xffffff,
+    }[selections.dialColor || 'white'] ?? 0xffffff)
 
     // Add a set dial details color if we have a mesh for it in the future
 

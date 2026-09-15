@@ -3,15 +3,17 @@ import { type ComponentType } from 'react';
 import { useWatchConfig, type Step } from '../../../context/WatchConfigContext';
 import { ConfigurationHeader } from './ConfigurationHeader';
 import BandStep from '../StepContent/BandStep';
+import WatchCaseStep from '../StepContent/WatchCaseStep';
+import DialDetailsStep from '../StepContent/DialDetailsStep';
 import DialColorStep from '../StepContent/DialColorStep';
 import OverviewStep from '../StepContent/OverviewStep';
-import DialDetailsStep from '../StepContent/DialDetailsStep';
 import { ConfigurationFooter } from './ConfigurationFooter';
 
 const STEP_CONTENT: Partial<Record<Step, ComponentType>> = {
   band: BandStep,
-  dialColor: DialColorStep,
+  watchCase: WatchCaseStep,
   dialDetails: DialDetailsStep,
+  dialColor: DialColorStep,
   overview: OverviewStep,
 };
 
