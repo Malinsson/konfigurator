@@ -20,8 +20,8 @@ export const BAND_CONFIGS: Record<BandType, BandConfig> = {
   steel: {
     url: metal_band,
     meshMap: {
-      strap: 'Plane006_1',
-      clasp: 'Plane006',
+      strap: 'clockförbättrat_ish_1',
+      clasp: 'clockförbättrat_ish',
     },
   },
 }

@@ -17,14 +17,16 @@ export function WatchBody({bodyColor, clockArmsColor}: WatchBodyProps) {
     useEffect(() => {
         const meshColors: Record<string, string> = {
             'watch_body': bodyColor,
-            'clock_arms': clockArmsColor,
+            'Cylinder002' : bodyColor,
+            'Cylinder002_1' : clockArmsColor,
         };
 
         cloned.traverse((child) => {
+
             
             if (!(child instanceof THREE.Mesh)) return;
 
-            if (child instanceof THREE.Mesh && child.name === 'glass') {
+            if (child instanceof THREE.Mesh && child.name === 'watch_body_glass') {
                 child.material = new THREE.MeshPhysicalMaterial({
                     color: new THREE.Color('#eeeeee'),
                     transparent: true,

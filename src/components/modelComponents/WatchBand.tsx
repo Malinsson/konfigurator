@@ -26,7 +26,9 @@ export function WatchBand({colors, type}: WatchBandProps) {
   }, [config, colors])
 
     useEffect(() => {
+        
         cloned.traverse((child) => {
+            console.log('Child name:', child.name); // Log the name of each child
         if (child instanceof THREE.Mesh) {
             const mat = (child.material as THREE.MeshStandardMaterial).clone()
         mat.color.set(meshColors[child.name] || '#ffffff')
