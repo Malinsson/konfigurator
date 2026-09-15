@@ -7,7 +7,6 @@ export type ViewId = 'top' | 'face' | 'band' | 'overview';
 type ViewConfig = {
   position: [number, number, number]
   target: [number, number, number]
-  fov?: number
   minPolar: number
   maxPolar: number
   minAzimuth: number
@@ -16,36 +15,32 @@ type ViewConfig = {
 
 const VIEWS: Record<ViewId, ViewConfig> = {
   top: {
-    position: [0, 2.5, 0.02],
+    position: [0, 3, 0.02],
     target: [0, 0, 0],
-    fov: 30,
     minPolar: 0.05,
     maxPolar: 0.35,
     minAzimuth: -0.3,
     maxAzimuth: 0.3,
   },
   face: {
-    position: [0, 2, 0.05],   // much closer than 'top' — this is the zoom
+    position: [0, 3, 0.05], 
     target: [0, 0, 0],
-    fov: 20,                      // narrower fov = more "macro lens" feel
     minPolar: 0.15,
     maxPolar: Math.PI / 2 - 0.05,
-    minAzimuth: -Infinity,   // full spin around the dial
+    minAzimuth: -Infinity,   
     maxAzimuth: Infinity,
   },
   band: {
-    position: [1, 1.5, 2.5], // off to the side (x) rather than dead-on (z)
-    target: [0, -1, 0],        // aim slightly low, toward the strap/clasp
-    fov: 35,
+    position: [2, 3, 2.5], 
+    target: [0, -1, 0],       
     minPolar: 0.2,
-    maxPolar: Math.PI - 0.2, // wide range — lets user rotate to see the clasp on the bottom
+    maxPolar: Math.PI - 0.2, 
     minAzimuth: -Math.PI,
-    maxAzimuth: Math.PI,     // effectively free horizontal rotation too
+    maxAzimuth: Math.PI,    
   },
   overview: {
-    position: [1, 2, 2.5],
+    position: [1, 4, 2.5],
     target: [0, -1, 0],
-    fov: 40,
     minPolar: 0.1,
     maxPolar: Math.PI / 2 - 0.1,
     minAzimuth: -Infinity,
@@ -87,7 +82,7 @@ export function CameraController() {
       )
     }, [activeView])
   
-  return <CameraControls ref={controlsRef} makeDefault />
+  return <CameraControls ref={controlsRef} dollySpeed={0} makeDefault />
   
 
 }

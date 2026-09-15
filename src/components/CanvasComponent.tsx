@@ -39,7 +39,7 @@ function CanvasComponent() {
   
   return (
     <section className={styles.home}>
-      <Canvas>
+      <Canvas camera= {{ fov: 50 }}>
         <Environment preset="park" background={false} />
         <CameraController />
         <ambientLight intensity={Math.PI / 2} />
