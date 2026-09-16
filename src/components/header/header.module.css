@@ -71,8 +71,8 @@ li a:focus-visible {
     background: none;
     padding: 0.5rem;
     cursor: pointer;
-    width: 1.91406rem;
-    height: 1.91406rem;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .cartButton img {
@@ -88,4 +88,12 @@ li a:focus-visible {
 .cartButton:focus-visible {
     outline: 2px solid var(--border);
     outline-offset: 2px;
+}
+
+@media (min-width: 1800px) {
+
+    nav {
+        gap: 10.25rem;
+    }
+
 }
