@@ -1,5 +1,5 @@
 import styles from './CanvasComponent.module.css'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import { CameraController } from './CameraController'
@@ -10,10 +10,23 @@ import { WatchIndex } from './modelComponents/WatchIndex'
 import { WatchBackground } from './modelComponents/WatchBackground'
 import * as THREE from 'three'
 
+function LoadingSpinner() {
+  return (
+    <div className={styles.loadingSpinner}>
+      <div className={styles.spinner}></div>
+      <p>Loading watch...</p>
+    </div>
+  )
+}
 
 function CanvasComponent() {
-  
+  const [isLoading, setIsLoading] = useState(true);
   const { selections } = useWatchConfig();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const bodyColor = selections.watchCaseColor === 'gold' ? '#d4af37' : '#C0C0C0';
 
@@ -35,11 +48,12 @@ function CanvasComponent() {
   const showIndex = selections.dialDetails.index === 'with' ? true : false;
 
   const backgroundColor = selections.dialColor === 'white' ? '#dfdfdf' : '#000000';
-  
-  
+
+
   return (
     <section className={styles.home}>
-      <Canvas 
+      {isLoading && <LoadingSpinner />}
+      <Canvas
         camera= {{ fov: 50 }}
         gl={{
           toneMapping: THREE.ACESFilmicToneMapping,
