@@ -27,6 +27,64 @@ The current prototype uses a fixed total price of **2500 SEK**. The “Add to Ca
 - CSS Modules
 - Oxlint
 
+## Accessibility
+
+The configurator is built with accessibility in mind and meets **WCAG 2.1 Level A** standards, with most components meeting **Level AA** standards.
+
+### Key Accessibility Features
+
+✅ **Keyboard Navigation**
+- Tab through all interactive elements
+- Arrow keys to rotate the 3D watch model
+- `+` / `-` keys to zoom in/out
+- `?` key for keyboard help
+
+✅ **Screen Reader Support**
+- Semantic HTML with proper form structure (fieldset/legend)
+- ARIA labels on interactive elements
+- Live regions for loading states and configuration updates
+- Proper heading hierarchy
+- Skip links to bypass navigation
+
+✅ **Visual Accessibility**
+- Consistent 2px focus indicators (outline + 2px offset) on all interactive elements
+- Sufficient color contrast on most elements
+- High-contrast focus states for keyboard users
+- Loading spinner with screen reader announcement
+
+✅ **3D Canvas Support**
+- Canvas has proper `role="img"` and dynamic `aria-label`
+- Keyboard controls allow interaction without mouse
+- Configuration state is announced to screen readers
+
+### Known Limitations
+
+⚠️ **Color Contrast** (WCAG AA)
+- Subtext color (#9C9B9B): 2.4:1 contrast - meets Level A, doesn't meet Level AA
+- Disabled button color (#CDCDCD): 2.1:1 contrast - meets Level A, doesn't meet Level AA
+- **Recommendation**: Consult design team about updating to #6B6969 and #999999 respectively
+
+⚠️ **Touch Target Size** (WCAG AAA)
+- Option buttons: 1.875rem (30px) - below recommended 44px
+- **Recommendation**: Consider increasing to 2.75rem (44px) for better mobile accessibility
+
+### Testing Accessibility
+
+For comprehensive accessibility testing, see [ACCESSIBILITY_TESTING.md](./ACCESSIBILITY_TESTING.md) which includes:
+- Screen reader testing procedures
+- Keyboard navigation test cases
+- Color contrast verification
+- Focus indicator testing
+- Automated testing tool recommendations
+
+### Compliance Summary
+
+| Standard | Status |
+|----------|--------|
+| WCAG 2.1 Level A | ✅ Meets |
+| WCAG 2.1 Level AA | ⚠️ Mostly meets (color contrast pending design review) |
+| WCAG 2.1 Level AAA | ❌ Does not meet |
+
 ## Getting Started
 
 ### Prerequisites
