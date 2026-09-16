@@ -15,8 +15,17 @@ button {
     user-select: none;
 }
 
-button:hover {
+button:hover:not(:disabled) {
     background-color: var(--designbtn-bg);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--border);
+    outline-offset: 2px;
+}
+
+button:disabled {
+    cursor: not-allowed;
 }
 
 .icon {

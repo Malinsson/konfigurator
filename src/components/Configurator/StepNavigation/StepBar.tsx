@@ -69,9 +69,9 @@ export function StepBar({currentStep}: {currentStep: string | undefined}) {
   };
 
   return (
-    <div className={styles.stepBar} ref={containerRef}>
+    <nav className={styles.stepBar} ref={containerRef} aria-label="Configuration steps">
 
-      <div className={styles.stepBarLine} style={indicatorStyle}></div>
+      <div className={styles.stepBarLine} style={indicatorStyle} aria-hidden="true"></div>
 
       {Object.entries(STEP_NAMES).map(([step, name]) => (
         <StepItem
@@ -84,6 +84,6 @@ export function StepBar({currentStep}: {currentStep: string | undefined}) {
         />
       ))}
 
-    </div>
+    </nav>
   );
 }

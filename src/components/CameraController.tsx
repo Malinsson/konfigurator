@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CameraControls } from '@react-three/drei'
 import { useWatchConfig, type Step } from '../context/WatchConfigContext'
 
@@ -51,6 +51,7 @@ const VIEWS: Record<ViewId, ViewConfig> = {
 export function CameraController() {
     const { currentStep } = useWatchConfig()
     const controlsRef = useRef<CameraControls>(null)
+    const [showKeyboardHint, setShowKeyboardHint] = useState(false);
 
     const stepViews: Record<Step, ViewId> = {
       start: 'top',
@@ -66,14 +67,14 @@ export function CameraController() {
     useEffect(() => {
       const controls = controlsRef.current
       if (!controls) return
-      
+
       const cfg = VIEWS[activeView]
-      
+
       controls.minPolarAngle = cfg.minPolar
       controls.maxPolarAngle = cfg.maxPolar
       controls.minAzimuthAngle = cfg.minAzimuth
       controls.maxAzimuthAngle = cfg.maxAzimuth
-      
+
       // animate camera to the new view's default framing
       controls.setLookAt(
         ...cfg.position,
@@ -81,8 +82,57 @@ export function CameraController() {
         true // enableTransition
       )
     }, [activeView])
-  
-  return <CameraControls ref={controlsRef} dollySpeed={0} makeDefault />
-  
 
+    // Handle keyboard navigation
+    useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        const controls = controlsRef.current
+        if (!controls) return
+
+        const rotationSpeed = 0.05;
+        const zoomSpeed = 0.1;
+
+        switch (event.key) {
+          case 'ArrowUp':
+            event.preventDefault();
+            controls.rotate(0, -rotationSpeed, true);
+            break;
+          case 'ArrowDown':
+            event.preventDefault();
+            controls.rotate(0, rotationSpeed, true);
+            break;
+          case 'ArrowLeft':
+            event.preventDefault();
+            controls.rotate(-rotationSpeed, 0, true);
+            break;
+          case 'ArrowRight':
+            event.preventDefault();
+            controls.rotate(rotationSpeed, 0, true);
+            break;
+          case '+':
+          case '=':
+            event.preventDefault();
+            controls.dolly(zoomSpeed, true);
+            break;
+          case '-':
+          case '_':
+            event.preventDefault();
+            controls.dolly(-zoomSpeed, true);
+            break;
+          case '?':
+            event.preventDefault();
+            setShowKeyboardHint(!showKeyboardHint);
+            break;
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [showKeyboardHint]);
+
+  return <CameraControls
+    ref={controlsRef}
+    dollySpeed={1}
+    makeDefault
+  />
 }

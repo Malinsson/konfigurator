@@ -12,9 +12,9 @@ import * as THREE from 'three'
 
 function LoadingSpinner() {
   return (
-    <div className={styles.loadingSpinner}>
-      <div className={styles.spinner}></div>
-      <p>Loading watch...</p>
+    <div className={styles.loadingSpinner} role="status" aria-live="polite" aria-label="Loading watch model">
+      <div className={styles.spinner} aria-hidden="true"></div>
+      <p>Loading watch model...</p>
     </div>
   )
 }
@@ -49,17 +49,34 @@ function CanvasComponent() {
 
   const backgroundColor = selections.dialColor === 'white' ? '#dfdfdf' : '#000000';
 
+  // Generate accessible description of watch configuration
+  const watchDescription = `Watch preview: ${selections.band.category || 'unselected'} band in ${selections.band.type || 'unselected'} color, ${selections.watchCaseColor || 'unselected'} watch case, ${selections.dialDetails.index || 'unselected'} index lines in ${selections.dialDetails.color || 'unselected'}, ${selections.dialColor || 'unselected'} dial.`;
 
   return (
     <section className={styles.home}>
       {isLoading && <LoadingSpinner />}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className={styles.srOnly}
+      >
+        {watchDescription}
+      </div>
+      <div className={styles.srOnly} role="region" aria-label="3D model keyboard controls">
+        <p>3D Model Controls: Use arrow keys to rotate, + to zoom in, - to zoom out, ? for help</p>
+        <p>Keyboard Shortcuts: Arrow Up/Down/Left/Right to rotate, Plus to zoom in, Minus to zoom out</p>
+      </div>
       <Canvas
         camera= {{ fov: 50 }}
         gl={{
           toneMapping: THREE.ACESFilmicToneMapping,
-          toneMappingExposure: 1, // tweak up/down to taste
+          toneMappingExposure: 1,
           antialias: true,
         }}
+        role="img"
+        aria-label={watchDescription}
+        tabIndex={0}
         >
         <Environment preset="warehouse" background={false} />
         <CameraController />
