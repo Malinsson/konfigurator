@@ -42,7 +42,7 @@ function CanvasComponent() {
     : selections.band.type === 'silver'
       ? '#C0C0C0'
       : selections.band.type === 'brown'
-        ? '#3b2415'
+        ? '#472b19'
         : '#111111';
 
   const showIndex = selections.dialDetails.index === 'with' ? true : false;

@@ -81,7 +81,7 @@ export function CameraController() {
         ...cfg.target,
         true // enableTransition
       )
-    }, [activeView])
+    }, [activeView, currentStep])
 
     // Handle keyboard navigation
     useEffect(() => {
