@@ -7,6 +7,9 @@ export const StepItem = forwardRef<HTMLDivElement, { step: string; isActive: boo
       <div
         ref={ref}
         className={`${styles.step} ${isActive ? '' : styles.stepInactive}`}
+        role="tab"
+        aria-selected={isActive}
+        aria-label={`Step: ${step}`}
       >
         {step}
       </div>

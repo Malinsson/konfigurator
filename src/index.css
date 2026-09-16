@@ -2,11 +2,13 @@
 :root {
   --text: black;
   --subtext: #9C9B9B;
+  /* WCAG AA recommendation: Change to #6B6969 for sufficient contrast (4.5:1) against --bg */
   --text-grey: rgba(0, 0, 0, 0.50); 
   --bg: #F8F8F8;
   --border: black;
   --designbtn-bg: #E2DFDB;
   --not-active: #CDCDCD;
+  /* WCAG AA recommendation: Change to #999999 for sufficient contrast (4.5:1) on disabled buttons */
   --gold: #E7D392;
   --silver: #CDCDCD;
   --black: #000;
@@ -124,3 +126,15 @@ button.dial-index-with.selected {
   background-color: var(--white) !important;
 }
 
+/* Screen reader only content - visually hidden but available to assistive technology */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

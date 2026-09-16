@@ -7,14 +7,21 @@ export function Header() {
   return (
     <header className={styles.header}>
       <nav>
-        <img src={unicaLogo} alt="UNICA" className={styles.logo} />
+        <a href="/" className={styles.logoLink} aria-label="UNICA Home">
+          <img src={unicaLogo} alt="" className={styles.logo} />
+        </a>
         <ul>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <img src={cartIcon} alt="Shopping cart" className={styles.shoppingBagIcon} />
+      <button
+        className={styles.cartButton}
+        aria-label="Shopping cart"
+      >
+        <img src={cartIcon} alt="" />
+      </button>
     </header>
   )
 }

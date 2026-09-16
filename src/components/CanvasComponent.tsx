@@ -1,57 +1,98 @@
 import styles from './CanvasComponent.module.css'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import { CameraController } from './CameraController'
 import { useWatchConfig } from '../context/WatchConfigContext'
 import { WatchBody } from './modelComponents/WatchBody'
-import { WatchBand } from './modelComponents/MetalBand'
+import { WatchBand } from './modelComponents/WatchBand'
 import { WatchIndex } from './modelComponents/WatchIndex'
 import { WatchBackground } from './modelComponents/WatchBackground'
+import * as THREE from 'three'
 
+function LoadingSpinner() {
+  return (
+    <div className={styles.loadingSpinner} role="status" aria-live="polite" aria-label="Loading watch model">
+      <div className={styles.spinner} aria-hidden="true"></div>
+      <p>Loading watch model...</p>
+    </div>
+  )
+}
 
 function CanvasComponent() {
-  
+  const [isLoading, setIsLoading] = useState(true);
   const { selections } = useWatchConfig();
 
-  const bodyColor = selections.watchCaseColor === 'gold' ? '#FFD700' : '#C0C0C0';
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const clockArmsColor = selections.dialDetails.color === 'gold' ? '#FFD700' : '#C0C0C0';
+  const bodyColor = selections.watchCaseColor === 'gold' ? '#d4af37' : '#C0C0C0';
+
+  const clockArmsColor = selections.dialDetails.color === 'gold' ? '#d4af37' : '#C0C0C0';
 
   const indexColor = clockArmsColor; // Use the same color as clock arms for the index
 
-  //Preped for conditional rendering of the band type for when we get the leather band model
-  //const bandType = selections.band.category === 'steel' ? 'steel' : 'leather';
+  const bandType = selections.band.category === 'steel' ? 'steel' : 'leather';
 
   const bandColor =
   selections.band.type === 'gold'
-    ? '#FFD700'
+    ? '#d4af37'
     : selections.band.type === 'silver'
       ? '#C0C0C0'
       : selections.band.type === 'brown'
-        ? '#8B4513'
+        ? '#3b2415'
         : '#111111';
 
   const showIndex = selections.dialDetails.index === 'with' ? true : false;
 
-  const backgroundColor = selections.dialColor === 'white' ? '#ffffff' : '#000000';
-  
-  
+  const backgroundColor = selections.dialColor === 'white' ? '#dfdfdf' : '#000000';
+
+  // Generate accessible description of watch configuration
+  const watchDescription = `Watch preview: ${selections.band.category || 'unselected'} band in ${selections.band.type || 'unselected'} color, ${selections.watchCaseColor || 'unselected'} watch case, ${selections.dialDetails.index || 'unselected'} index lines in ${selections.dialDetails.color || 'unselected'}, ${selections.dialColor || 'unselected'} dial.`;
+
   return (
     <section className={styles.home}>
-      <Canvas camera= {{ fov: 50 }}>
-        <Environment preset="park" background={false} />
+      {isLoading && <LoadingSpinner />}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className={styles.srOnly}
+      >
+        {watchDescription}
+      </div>
+      <div className={styles.srOnly} role="region" aria-label="3D model keyboard controls">
+        <p>3D Model Controls: Use arrow keys to rotate, + to zoom in, - to zoom out, ? for help</p>
+        <p>Keyboard Shortcuts: Arrow Up/Down/Left/Right to rotate, Plus to zoom in, Minus to zoom out</p>
+      </div>
+      <Canvas
+        camera= {{ fov: 50 }}
+        gl={{
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1,
+          antialias: true,
+        }}
+        role="img"
+        aria-label={watchDescription}
+        tabIndex={0}
+        >
+        <Environment preset="warehouse" background={false} />
         <CameraController />
         <ambientLight intensity={Math.PI / 2} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
-        <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+        <spotLight position={[15, 15, 15]} angle={0.15} penumbra={1} decay={0} intensity={0.4} />
+        <pointLight position={[-10, -10, -10]} decay={0} intensity={0.3} />
         <Suspense fallback={null}>
 
           < WatchBody 
-          bodyColor={bodyColor}
-          clockArmsColor={clockArmsColor} />
+            bodyColor={bodyColor}
+            clockArmsColor={clockArmsColor} />
 
-          < WatchBand color={bandColor} />
+          < WatchBand 
+            type={bandType} 
+            colors={bandType === 'steel' ? { strap: bandColor } : { strap: bandColor, stitching: '#402b09', clasp: bodyColor }}
+          />
 
           {showIndex && <WatchIndex color={indexColor} />}
 

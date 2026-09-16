@@ -20,10 +20,11 @@ export function NavigationButton({
         return (
             <button
                 className={`${styles.navigationButton} ${className || ''} ${!active ? styles.disabled : ''}`}
-                onClick={onClick} 
+                onClick={onClick}
+                disabled={!active}
             >
                 {buttonText}
-                <ChevronRightIcon className={styles.icon} />
+                <ChevronRightIcon className={styles.icon} aria-hidden="true" />
             </button>
         );
     }
@@ -32,8 +33,9 @@ export function NavigationButton({
         <button
         className={`${styles.navigationButton} ${className || ''} ${!active ? styles.disabled : ''}`}
         onClick={onClick}
+        disabled={!active}
         >
-                <ChevronLeftIcon className={styles.icon} />
+                <ChevronLeftIcon className={styles.icon} aria-hidden="true" />
                 {buttonText}
         </button>
     );

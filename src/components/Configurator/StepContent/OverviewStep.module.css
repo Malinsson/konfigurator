@@ -165,6 +165,11 @@
   background-color: var(--designbtn-bg);
 }
 
+.addToCartButton:focus-visible {
+  outline: 2px solid var(--border);
+  outline-offset: 2px;
+}
+
 .addToCartIcon {
   height: 1rem;
   width: auto;
