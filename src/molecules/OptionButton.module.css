@@ -18,16 +18,10 @@
   position: relative;
 }
 
-/* Focus state - shows underline for keyboard navigation (accessibility) */
-.button:focus::after {
-  content: '';
-  position: absolute;
-  bottom: -0.4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(1.875rem - 0.22rem);
-  height: 1px;
-  background-color: var(--silver);
+/* Focus state - shows visible ring for keyboard navigation (accessibility) */
+.button:focus-visible {
+  outline: 2px solid var(--border);
+  outline-offset: 2px;
 }
 
 

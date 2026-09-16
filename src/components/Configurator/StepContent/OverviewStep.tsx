@@ -110,7 +110,7 @@ export default function OverviewStep() {
             onClick={() => console.log('Add to cart:', selections)}
           >
             Add to Cart
-            <ChevronRightIcon className={styles.addToCartIcon} />
+            <ChevronRightIcon className={styles.addToCartIcon} aria-hidden="true" />
           </button>
         </div>
       </div>

@@ -23,7 +23,7 @@ export default function ConfigurationPanel() {
   const StepContent = STEP_CONTENT[currentStep];
 
   return (
-    <article className={styles.configurationPanel}>
+    <article className={styles.configurationPanel} id="configuration-panel">
       <div className={styles.container}>
 
         {currentStep !== 'overview' && <ConfigurationHeader />}

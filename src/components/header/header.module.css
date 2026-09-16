@@ -6,13 +6,24 @@
     width: 100%;
     gap: 4rem;
 }
+.logoLink {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.logoLink:focus-visible {
+    outline: 2px solid var(--border);
+    outline-offset: 2px;
+}
+
 .logo {
     height: 4.75rem;
     width: auto;
-    /* padding: .9rem 0; */
-}
-.logo, .shoppingBagIcon {
-    cursor: pointer;
+    display: block;
 }
 
 nav {
@@ -47,8 +58,34 @@ li a:hover {
     text-decoration: underline;
 }
 
-.shoppingBagIcon {
-    display: block;
+li a:focus-visible {
+    outline: 2px solid var(--border);
+    outline-offset: 2px;
+}
+
+.cartButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    cursor: pointer;
     width: 1.91406rem;
+    height: 1.91406rem;
+}
+
+.cartButton img {
+    width: 100%;
     height: auto;
+    display: block;
+}
+
+.cartButton:hover {
+    opacity: 0.8;
+}
+
+.cartButton:focus-visible {
+    outline: 2px solid var(--border);
+    outline-offset: 2px;
 }
