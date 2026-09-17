@@ -46,7 +46,8 @@ ul {
 }
 
 li {
-    font-family: var(--serif);
+    font-family: var(--sans);
+    font-weight: 300;
 }
 
 li a {
